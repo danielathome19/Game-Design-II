@@ -1,0 +1,60 @@
+[gd_scene load_steps=4 format=3 uid="uid://7i0r1ompyasy"]
+
+[ext_resource type="Script" path="res://FavClub.gd" id="1_a38ui"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ckhct"]
+font_size = 30
+
+[sub_resource type="Theme" id="Theme_1ctgt"]
+default_font_size = 30
+
+[node name="FavClub" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_a38ui")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 262.0
+offset_top = 168.0
+offset_right = 846.0
+offset_bottom = 377.0
+text = "-"
+label_settings = SubResource("LabelSettings_ckhct")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="btnShow" type="Button" parent="."]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 467.0
+offset_right = 356.0
+offset_bottom = 643.0
+theme = SubResource("Theme_1ctgt")
+text = "Show"
+
+[node name="btnClear" type="Button" parent="."]
+layout_mode = 0
+offset_left = 405.0
+offset_top = 465.0
+offset_right = 757.0
+offset_bottom = 641.0
+theme = SubResource("Theme_1ctgt")
+text = "Clear"
+
+[node name="btnExit" type="Button" parent="."]
+layout_mode = 0
+offset_left = 801.0
+offset_top = 467.0
+offset_right = 1153.0
+offset_bottom = 643.0
+theme = SubResource("Theme_1ctgt")
+text = "Exit"
+
+[connection signal="pressed" from="btnShow" to="." method="_on_btn_show_pressed"]
+[connection signal="pressed" from="btnClear" to="." method="_on_btn_clear_pressed"]
+[connection signal="pressed" from="btnExit" to="." method="_on_btn_exit_pressed"]
