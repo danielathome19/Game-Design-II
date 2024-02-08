@@ -48,6 +48,18 @@ use_collision = true
 size = Vector3(7.04827, 1.21004, 2.73367)
 material = SubResource("StandardMaterial3D_obkha")
 
+[node name="CSGBox3D2" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.44323, 1.12734, 2.96384)
+use_collision = true
+size = Vector3(7.04827, 0.670108, 8.22973)
+material = SubResource("StandardMaterial3D_obkha")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.9101, 1.89844, 8.61943)
+use_collision = true
+size = Vector3(7.04827, 0.670108, 4.96165)
+material = SubResource("StandardMaterial3D_obkha")
+
 [node name="player3d" type="CharacterBody3D" parent="."]
 script = ExtResource("1_j1iqx")
 
@@ -61,3 +73,4 @@ shape = SubResource("CapsuleShape3D_688ja")
 
 [node name="Camera3D" type="Camera3D" parent="player3d"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.52696, 0)
+fov = 90.0
