@@ -71,6 +71,13 @@ mesh = SubResource("CapsuleMesh_fbpll")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0636, 0)
 shape = SubResource("CapsuleShape3D_688ja")
 
-[node name="Camera3D" type="Camera3D" parent="player3d"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.52696, 0)
+[node name="SpringArm3D" type="SpringArm3D" parent="player3d"]
+transform = Transform3D(1, 0, 0, 0, 0.994522, 0.104528, 0, -0.104528, 0.994522, 0, 1.60664, 0)
+spring_length = 6.0
+
+[node name="Head" type="Node3D" parent="player3d"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.46576, 0)
+
+[node name="Camera3D" type="Camera3D" parent="player3d/Head"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0612019, 0)
 fov = 90.0
