@@ -13,6 +13,9 @@ const CAM_SENSITIVITY = 0.03
 @onready var camera_pos = camera.position
 var first_person = true
 
+@onready var model = $gobot
+@onready var animator = $gobot/AnimationPlayer
+
 func _physics_process(delta):
 	# Add the gravity.
 	if not is_on_floor():
@@ -27,9 +30,11 @@ func _physics_process(delta):
 	var input_dir = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	if direction:
+		animator.play("Walk")
 		velocity.x = direction.x * SPEED
 		velocity.z = direction.z * SPEED
 	else:
+		animator.play("Idle")
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 	
@@ -42,6 +47,12 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("change_camera"):
 		toggle_camera_parent()  # V
 	
+	var rotate_dir = Input.get_vector("rot_left", "rot_right", 
+									  "rot_up", "rot_down").normalized()
+	if rotate_dir:
+		self.rotation.x += rotate_dir.x / 100.0
+		self.rotation.z += rotate_dir.y / 100.0
+	
 	move_and_slide()
 	
 
@@ -49,16 +60,19 @@ func toggle_camera_parent():
 	var parent = "Head"
 	if first_person:
 		parent = "SpringArm3D"
+		model.visible = true
 	var child = camera
 	child.get_parent().remove_child(child)
 	get_node(parent).add_child(child)
 	camera = child
 	if not first_person:
 		camera.position = camera_pos
+		model.visible = false
 	first_person = not first_person
 	
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	model.visible = false
 
 func _unhandled_input(event):
 	if event is InputEventMouseMotion and Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:

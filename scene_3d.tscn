@@ -1,6 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://i5cgx7babarg"]
+[gd_scene load_steps=11 format=3 uid="uid://i5cgx7babarg"]
 
 [ext_resource type="Script" path="res://player3d.gd" id="1_j1iqx"]
+[ext_resource type="PackedScene" uid="uid://cl0i42ek3dlda" path="res://models/gobot.glb" id="2_rkax4"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_rubsh"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -65,6 +66,7 @@ script = ExtResource("1_j1iqx")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="player3d"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.08976, 0)
+visible = false
 mesh = SubResource("CapsuleMesh_fbpll")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="player3d"]
@@ -81,3 +83,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.46576, 0)
 [node name="Camera3D" type="Camera3D" parent="player3d/Head"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0612019, 0)
 fov = 90.0
+
+[node name="gobot" parent="player3d" instance=ExtResource("2_rkax4")]
+transform = Transform3D(-1.35, 0, -1.18021e-07, 0, 1.35, 0, 1.18021e-07, 0, -1.35, 0, 0, 0)
