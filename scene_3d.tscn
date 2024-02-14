@@ -1,7 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://i5cgx7babarg"]
+[gd_scene load_steps=15 format=3 uid="uid://i5cgx7babarg"]
 
 [ext_resource type="Script" path="res://player3d.gd" id="1_j1iqx"]
 [ext_resource type="PackedScene" uid="uid://cl0i42ek3dlda" path="res://models/gobot.glb" id="2_rkax4"]
+[ext_resource type="Script" path="res://addons/zylann.hterrain/hterrain.gd" id="3_qm53b"]
+[ext_resource type="Resource" path="res://terrain/data.hterrain" id="4_y6v3s"]
+[ext_resource type="Script" path="res://addons/zylann.hterrain/hterrain_texture_set.gd" id="5_corf4"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_rubsh"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -28,6 +31,11 @@ albedo_color = Color(0.0941176, 0.290196, 1, 1)
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_688ja"]
 
+[sub_resource type="Resource" id="Resource_0qpns"]
+script = ExtResource("5_corf4")
+mode = 0
+textures = [[], []]
+
 [node name="scene3d" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.26074)
 
@@ -39,6 +47,7 @@ transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -
 shadow_enabled = true
 
 [node name="CSGMesh3D" type="CSGMesh3D" parent="."]
+visible = false
 use_collision = true
 mesh = SubResource("PlaneMesh_fl2mv")
 material = SubResource("StandardMaterial3D_74jw0")
@@ -92,3 +101,22 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5187, 3.11463, 10.0052)
 use_collision = true
 polygon = PackedVector2Array(-0.594689, -1.81342, -2.65016, -1.05739, 3.0436, 2.19126, 1.59114, -0.501745)
 depth = 5.3
+
+[node name="HTerrain" type="Node3D" parent="."]
+script = ExtResource("3_qm53b")
+centered = true
+_terrain_data = ExtResource("4_y6v3s")
+chunk_size = 32
+collision_enabled = true
+collision_layer = 1
+collision_mask = 1
+shader_type = "Classic4Lite"
+custom_shader = null
+custom_globalmap_shader = null
+texture_set = SubResource("Resource_0qpns")
+render_layers = 1
+cast_shadow = 1
+shader_params/u_ground_uv_scale = 20
+shader_params/u_depth_blending = true
+shader_params/u_triplanar = null
+shader_params/u_tile_reduction = null
