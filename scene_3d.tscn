@@ -86,3 +86,9 @@ fov = 90.0
 
 [node name="gobot" parent="player3d" instance=ExtResource("2_rkax4")]
 transform = Transform3D(-1.35, 0, -1.18021e-07, 0, 1.35, 0, 1.18021e-07, 0, -1.35, 0, 0, 0)
+
+[node name="CSGPolygon3D" type="CSGPolygon3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5187, 3.11463, 10.0052)
+use_collision = true
+polygon = PackedVector2Array(-0.594689, -1.81342, -2.65016, -1.05739, 3.0436, 2.19126, 1.59114, -0.501745)
+depth = 5.3
