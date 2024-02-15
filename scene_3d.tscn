@@ -1,10 +1,16 @@
-[gd_scene load_steps=15 format=3 uid="uid://i5cgx7babarg"]
+[gd_scene load_steps=21 format=3 uid="uid://i5cgx7babarg"]
 
 [ext_resource type="Script" path="res://player3d.gd" id="1_j1iqx"]
 [ext_resource type="PackedScene" uid="uid://cl0i42ek3dlda" path="res://models/gobot.glb" id="2_rkax4"]
 [ext_resource type="Script" path="res://addons/zylann.hterrain/hterrain.gd" id="3_qm53b"]
 [ext_resource type="Resource" path="res://terrain/data.hterrain" id="4_y6v3s"]
 [ext_resource type="Script" path="res://addons/zylann.hterrain/hterrain_texture_set.gd" id="5_corf4"]
+[ext_resource type="Texture2D" uid="uid://cm5wass2wt8ey" path="res://terrain/textures/Grass001_1K-JPG/Grass001_1K-JPG_Color.jpg" id="6_t5ppj"]
+[ext_resource type="Texture2D" uid="uid://kv3kcy104bn4" path="res://terrain/textures/Asphalt023S_1K-JPG/Asphalt023S_1K-JPG_Color.jpg" id="7_eqtkq"]
+[ext_resource type="Texture2D" uid="uid://koeswlu8tfe4" path="res://terrain/textures/Rock030_1K-JPG/Rock030_1K-JPG_Color.jpg" id="8_vex28"]
+[ext_resource type="Texture2D" uid="uid://227klwsn3d0v" path="res://terrain/textures/Grass001_1K-JPG/Grass001_1K-JPG_NormalGL.jpg" id="9_f80a1"]
+[ext_resource type="Texture2D" uid="uid://bf88yps3bhs8q" path="res://terrain/textures/Asphalt023S_1K-JPG/Asphalt023S_1K-JPG_NormalGL.jpg" id="10_e3yvp"]
+[ext_resource type="Texture2D" uid="uid://b4p0ckx100duk" path="res://terrain/textures/Rock030_1K-JPG/Rock030_1K-JPG_NormalGL.jpg" id="11_8t1nw"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_rubsh"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -34,7 +40,7 @@ albedo_color = Color(0.0941176, 0.290196, 1, 1)
 [sub_resource type="Resource" id="Resource_0qpns"]
 script = ExtResource("5_corf4")
 mode = 0
-textures = [[], []]
+textures = [[ExtResource("6_t5ppj"), ExtResource("7_eqtkq"), ExtResource("8_vex28")], [ExtResource("9_f80a1"), ExtResource("10_e3yvp"), ExtResource("11_8t1nw")]]
 
 [node name="scene3d" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.26074)
