@@ -1,7 +1,9 @@
-[gd_scene load_steps=21 format=3 uid="uid://i5cgx7babarg"]
+[gd_scene load_steps=24 format=3 uid="uid://i5cgx7babarg"]
 
+[ext_resource type="Texture2D" uid="uid://dcptol2d2wjdw" path="res://terrain/textures/Metal046B_1K-JPG/Metal046B_1K-JPG_Color.jpg" id="1_gmruw"]
 [ext_resource type="Script" path="res://player3d.gd" id="1_j1iqx"]
 [ext_resource type="PackedScene" uid="uid://cl0i42ek3dlda" path="res://models/gobot.glb" id="2_rkax4"]
+[ext_resource type="Texture2D" uid="uid://dn4que2vl2a7b" path="res://terrain/textures/Metal046B_1K-JPG/Metal046B_1K-JPG_Metalness.jpg" id="2_wrd8v"]
 [ext_resource type="Script" path="res://addons/zylann.hterrain/hterrain.gd" id="3_qm53b"]
 [ext_resource type="Resource" path="res://terrain/data.hterrain" id="4_y6v3s"]
 [ext_resource type="Script" path="res://addons/zylann.hterrain/hterrain_texture_set.gd" id="5_corf4"]
@@ -30,8 +32,14 @@ size = Vector2(500, 500)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_74jw0"]
 albedo_color = Color(0.145098, 0.533333, 0.0941176, 1)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kk3j7"]
+albedo_texture = ExtResource("1_gmruw")
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_obkha"]
-albedo_color = Color(0.0941176, 0.290196, 1, 1)
+albedo_color = Color(0.0941176, 0.290196, 1, 0)
+metallic = 1.0
+metallic_specular = 0.67
+metallic_texture = ExtResource("2_wrd8v")
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_fbpll"]
 
@@ -60,6 +68,7 @@ material = SubResource("StandardMaterial3D_74jw0")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.96046e-08, 2.96384)
+material_override = SubResource("StandardMaterial3D_kk3j7")
 use_collision = true
 size = Vector3(7.04827, 1.21004, 2.73367)
 material = SubResource("StandardMaterial3D_obkha")
@@ -109,6 +118,7 @@ polygon = PackedVector2Array(-0.594689, -1.81342, -2.65016, -1.05739, 3.0436, 2.
 depth = 5.3
 
 [node name="HTerrain" type="Node3D" parent="."]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
 script = ExtResource("3_qm53b")
 centered = true
 _terrain_data = ExtResource("4_y6v3s")
