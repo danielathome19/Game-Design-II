@@ -1,10 +1,10 @@
-[gd_scene load_steps=24 format=3 uid="uid://i5cgx7babarg"]
+[gd_scene load_steps=23 format=3 uid="uid://i5cgx7babarg"]
 
 [ext_resource type="Texture2D" uid="uid://dcptol2d2wjdw" path="res://terrain/textures/Metal046B_1K-JPG/Metal046B_1K-JPG_Color.jpg" id="1_gmruw"]
-[ext_resource type="Script" path="res://player3d.gd" id="1_j1iqx"]
-[ext_resource type="PackedScene" uid="uid://cl0i42ek3dlda" path="res://models/gobot.glb" id="2_rkax4"]
 [ext_resource type="Texture2D" uid="uid://dn4que2vl2a7b" path="res://terrain/textures/Metal046B_1K-JPG/Metal046B_1K-JPG_Metalness.jpg" id="2_wrd8v"]
 [ext_resource type="Script" path="res://addons/zylann.hterrain/hterrain.gd" id="3_qm53b"]
+[ext_resource type="PackedScene" uid="uid://d12bgjnotm77o" path="res://player_3d.tscn" id="3_r4pmc"]
+[ext_resource type="PackedScene" uid="uid://bfbxis02va7fh" path="res://enemy_3d.tscn" id="3_ucp1y"]
 [ext_resource type="Resource" path="res://terrain/data.hterrain" id="4_y6v3s"]
 [ext_resource type="Script" path="res://addons/zylann.hterrain/hterrain_texture_set.gd" id="5_corf4"]
 [ext_resource type="Texture2D" uid="uid://cm5wass2wt8ey" path="res://terrain/textures/Grass001_1K-JPG/Grass001_1K-JPG_Color.jpg" id="6_t5ppj"]
@@ -41,14 +41,13 @@ metallic = 1.0
 metallic_specular = 0.67
 metallic_texture = ExtResource("2_wrd8v")
 
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_fbpll"]
-
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_688ja"]
-
 [sub_resource type="Resource" id="Resource_0qpns"]
 script = ExtResource("5_corf4")
 mode = 0
 textures = [[ExtResource("6_t5ppj"), ExtResource("7_eqtkq"), ExtResource("8_vex28")], [ExtResource("9_f80a1"), ExtResource("10_e3yvp"), ExtResource("11_8t1nw")]]
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_tsjxl"]
+agent_height = 2.0
 
 [node name="scene3d" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.26074)
@@ -85,31 +84,10 @@ use_collision = true
 size = Vector3(7.04827, 0.670108, 4.96165)
 material = SubResource("StandardMaterial3D_obkha")
 
-[node name="player3d" type="CharacterBody3D" parent="."]
-script = ExtResource("1_j1iqx")
+[node name="enemy3d" parent="." instance=ExtResource("3_ucp1y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.10664, -19.3097)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="player3d"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.08976, 0)
-visible = false
-mesh = SubResource("CapsuleMesh_fbpll")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="player3d"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0636, 0)
-shape = SubResource("CapsuleShape3D_688ja")
-
-[node name="SpringArm3D" type="SpringArm3D" parent="player3d"]
-transform = Transform3D(1, 0, 0, 0, 0.994522, 0.104528, 0, -0.104528, 0.994522, 0, 1.60664, 0)
-spring_length = 6.0
-
-[node name="Head" type="Node3D" parent="player3d"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.46576, 0)
-
-[node name="Camera3D" type="Camera3D" parent="player3d/Head"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0612019, 0)
-fov = 90.0
-
-[node name="gobot" parent="player3d" instance=ExtResource("2_rkax4")]
-transform = Transform3D(-1.35, 0, -1.18021e-07, 0, 1.35, 0, 1.18021e-07, 0, -1.35, 0, 0, 0)
+[node name="player3d" parent="." instance=ExtResource("3_r4pmc")]
 
 [node name="CSGPolygon3D" type="CSGPolygon3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5187, 3.11463, 10.0052)
@@ -136,3 +114,6 @@ shader_params/u_ground_uv_scale = 20
 shader_params/u_depth_blending = true
 shader_params/u_triplanar = null
 shader_params/u_tile_reduction = null
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+navigation_mesh = SubResource("NavigationMesh_tsjxl")
