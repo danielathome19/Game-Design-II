@@ -85,9 +85,10 @@ size = Vector3(7.04827, 0.670108, 4.96165)
 material = SubResource("StandardMaterial3D_obkha")
 
 [node name="enemy3d" parent="." instance=ExtResource("3_ucp1y")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.10664, -19.3097)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.17938, -19.3097)
 
 [node name="player3d" parent="." instance=ExtResource("3_r4pmc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.77703, 0)
 
 [node name="CSGPolygon3D" type="CSGPolygon3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5187, 3.11463, 10.0052)
