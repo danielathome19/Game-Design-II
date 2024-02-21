@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://i5cgx7babarg"]
+[gd_scene load_steps=24 format=3 uid="uid://i5cgx7babarg"]
 
 [ext_resource type="Texture2D" uid="uid://dcptol2d2wjdw" path="res://terrain/textures/Metal046B_1K-JPG/Metal046B_1K-JPG_Color.jpg" id="1_gmruw"]
 [ext_resource type="Texture2D" uid="uid://dn4que2vl2a7b" path="res://terrain/textures/Metal046B_1K-JPG/Metal046B_1K-JPG_Metalness.jpg" id="2_wrd8v"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://227klwsn3d0v" path="res://terrain/textures/Grass001_1K-JPG/Grass001_1K-JPG_NormalGL.jpg" id="9_f80a1"]
 [ext_resource type="Texture2D" uid="uid://bf88yps3bhs8q" path="res://terrain/textures/Asphalt023S_1K-JPG/Asphalt023S_1K-JPG_NormalGL.jpg" id="10_e3yvp"]
 [ext_resource type="Texture2D" uid="uid://b4p0ckx100duk" path="res://terrain/textures/Rock030_1K-JPG/Rock030_1K-JPG_NormalGL.jpg" id="11_8t1nw"]
+[ext_resource type="PackedScene" uid="uid://dnd0i7ti1q7wr" path="res://playerhud_3d.tscn" id="14_77wqp"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_rubsh"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -118,3 +119,14 @@ shader_params/u_tile_reduction = null
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 navigation_mesh = SubResource("NavigationMesh_tsjxl")
+
+[node name="playerhud3d" parent="." instance=ExtResource("14_77wqp")]
+
+[node name="enemy3d2" parent="." instance=ExtResource("3_ucp1y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.66182, 1.13899, -28.0342)
+
+[node name="enemy3d3" parent="." instance=ExtResource("3_ucp1y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.1684, 1.21942, -39.1211)
+
+[node name="enemy3d4" parent="." instance=ExtResource("3_ucp1y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.0967, 1.23415, -17.5031)
