@@ -1,10 +1,10 @@
-[gd_scene load_steps=24 format=3 uid="uid://i5cgx7babarg"]
+[gd_scene load_steps=25 format=3 uid="uid://i5cgx7babarg"]
 
 [ext_resource type="Texture2D" uid="uid://dcptol2d2wjdw" path="res://terrain/textures/Metal046B_1K-JPG/Metal046B_1K-JPG_Color.jpg" id="1_gmruw"]
 [ext_resource type="Texture2D" uid="uid://dn4que2vl2a7b" path="res://terrain/textures/Metal046B_1K-JPG/Metal046B_1K-JPG_Metalness.jpg" id="2_wrd8v"]
 [ext_resource type="Script" path="res://addons/zylann.hterrain/hterrain.gd" id="3_qm53b"]
 [ext_resource type="PackedScene" uid="uid://d12bgjnotm77o" path="res://player_3d.tscn" id="3_r4pmc"]
-[ext_resource type="PackedScene" uid="uid://bfbxis02va7fh" path="res://enemy_3d.tscn" id="3_ucp1y"]
+[ext_resource type="PackedScene" uid="uid://bckjjsxpywatm" path="res://enemy_3d.tscn" id="3_ucp1y"]
 [ext_resource type="Resource" path="res://terrain/data.hterrain" id="4_y6v3s"]
 [ext_resource type="Script" path="res://addons/zylann.hterrain/hterrain_texture_set.gd" id="5_corf4"]
 [ext_resource type="Texture2D" uid="uid://cm5wass2wt8ey" path="res://terrain/textures/Grass001_1K-JPG/Grass001_1K-JPG_Color.jpg" id="6_t5ppj"]
@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://bf88yps3bhs8q" path="res://terrain/textures/Asphalt023S_1K-JPG/Asphalt023S_1K-JPG_NormalGL.jpg" id="10_e3yvp"]
 [ext_resource type="Texture2D" uid="uid://b4p0ckx100duk" path="res://terrain/textures/Rock030_1K-JPG/Rock030_1K-JPG_NormalGL.jpg" id="11_8t1nw"]
 [ext_resource type="PackedScene" uid="uid://dnd0i7ti1q7wr" path="res://playerhud_3d.tscn" id="14_77wqp"]
+[ext_resource type="PackedScene" uid="uid://3gjpuqf1myxl" path="res://goal.tscn" id="15_7brhl"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_rubsh"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -57,7 +58,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.26074)
 environment = SubResource("Environment_l1uxw")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 1326.95, 0)
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
 shadow_enabled = true
 
 [node name="CSGMesh3D" type="CSGMesh3D" parent="."]
@@ -130,3 +131,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.1684, 1.21942, -39.1211)
 
 [node name="enemy3d4" parent="." instance=ExtResource("3_ucp1y")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.0967, 1.23415, -17.5031)
+
+[node name="Goal" parent="." instance=ExtResource("15_7brhl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.2292, -0.427814, 26.9008)
+next_level = "scene_3d_2"
