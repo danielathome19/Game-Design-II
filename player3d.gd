@@ -31,6 +31,8 @@ var HEALTH = MAX_HEALTH
 var damage_lock = 0.0  # Prevent infinite damage
 var inertia = Vector3.ZERO
 
+var PUSH_FORCE = 25.0
+
 var dmg_shader = preload("res://assets/shaders/take_damage.tres")
 @onready var HUD = get_tree().get_first_node_in_group("HUD")
 
@@ -101,6 +103,18 @@ func _physics_process(delta):
 	HUD.healthbar.value = int(HEALTH)
 	
 	move_and_slide()
+	
+	for i in range(get_slide_collision_count()):
+		var c = get_slide_collision(i)
+		var col = c.get_collider()
+		if col is RigidBody3D and is_on_floor():
+			col.apply_central_force(-c.get_normal() * PUSH_FORCE)
+			# col.apply_central_impulse(-c.get_normal() * PUSH_FORCE)
+	
+	if self.global_position.y <= -50:
+		take_damage(MAX_HEALTH)
+	
+	pass
 	
 
 func take_damage(dmg):

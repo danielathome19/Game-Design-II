@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://fg32d36e6vwd"]
+[gd_scene load_steps=19 format=3 uid="uid://fg32d36e6vwd"]
 
 [ext_resource type="Script" path="res://addons/zylann.hterrain/hterrain.gd" id="1_j77ju"]
 [ext_resource type="Resource" path="res://terrain/map2/data.hterrain" id="2_t4b8i"]
@@ -9,6 +9,8 @@
 [ext_resource type="Texture2D" uid="uid://227klwsn3d0v" path="res://terrain/textures/Grass001_1K-JPG/Grass001_1K-JPG_NormalGL.jpg" id="5_xtej0"]
 [ext_resource type="PackedScene" uid="uid://bckjjsxpywatm" path="res://enemy_3d.tscn" id="6_2j7iy"]
 [ext_resource type="PackedScene" uid="uid://3gjpuqf1myxl" path="res://goal.tscn" id="7_5fbmu"]
+[ext_resource type="PackedScene" uid="uid://do0dfyq72k0mw" path="res://pushable.tscn" id="10_i4s2p"]
+[ext_resource type="PackedScene" uid="uid://nuoakiqvw7er" path="res://kick_ball.tscn" id="11_3pa10"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_i2bsy"]
 sky_top_color = Color(0.0352941, 0.109804, 0.294118, 1)
@@ -30,6 +32,13 @@ mode = 0
 textures = [[ExtResource("4_4hfqk")], [ExtResource("5_xtej0")]]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_pj2fi"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_w60gd"]
+friction = 0.5
+bounce = 0.5
+
+[sub_resource type="SphereMesh" id="SphereMesh_14keq"]
+radius = 3.0
 
 [node name="scene3d2" type="Node3D"]
 
@@ -75,3 +84,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.6606, 0, -25.7482)
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 navigation_mesh = SubResource("NavigationMesh_pj2fi")
+
+[node name="Pushable" parent="." instance=ExtResource("10_i4s2p")]
+
+[node name="KickBall" parent="." instance=ExtResource("11_3pa10")]
+physics_material_override = SubResource("PhysicsMaterial_w60gd")
+
+[node name="SoftBody3D" type="SoftBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.0414, 4.25776, 29.8817)
+mesh = SubResource("SphereMesh_14keq")
