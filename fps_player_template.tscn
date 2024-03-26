@@ -1,0 +1,43 @@
+[gd_scene load_steps=6 format=3 uid="uid://beeyeenq2byet"]
+
+[ext_resource type="Script" path="res://fps_player_template.gd" id="1_h8c6h"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_s15q6"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_swrap"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y7p1v"]
+albedo_color = Color(0, 0, 0.694118, 1)
+metallic = 1.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_aak7c"]
+albedo_color = Color(1, 0.207843, 0.054902, 1)
+metallic = 1.0
+metallic_specular = 1.0
+
+[node name="fps_player" type="CharacterBody3D" groups=["Player"]]
+script = ExtResource("1_h8c6h")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_s15q6")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_swrap")
+
+[node name="Head" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
+
+[node name="Camera3D" type="Camera3D" parent="Head"]
+current = true
+near = 0.25
+
+[node name="blaster" type="CSGBox3D" parent="Head/Camera3D"]
+transform = Transform3D(0.595568, 0.173252, 0.324473, 0, 0.617489, -0.329708, -0.36783, 0.280519, 0.525366, 0.219, -0.27, -0.421)
+size = Vector3(0.128687, 0.145801, 0.697644)
+material = SubResource("StandardMaterial3D_y7p1v")
+
+[node name="muzzle" type="CSGCylinder3D" parent="Head/Camera3D/blaster"]
+transform = Transform3D(1, 2.32831e-10, 5.82077e-11, 1.16415e-10, -2.98023e-08, 1, 0, -1, -4.47035e-08, -0.00586492, -0.0017724, -0.364076)
+radius = 0.0568142
+height = 0.14681
+material = SubResource("StandardMaterial3D_aak7c")

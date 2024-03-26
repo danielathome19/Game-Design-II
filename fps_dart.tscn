@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=3 uid="uid://d0b1xeyi13vq5"]
+
+[ext_resource type="Script" path="res://fps_dart.gd" id="1_5sguf"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ojfuh"]
+albedo_color = Color(0, 0.654902, 1, 1)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_oyvnw"]
+height = 0.095
+radius = 0.02
+
+[node name="fps_dart" type="RigidBody3D"]
+script = ExtResource("1_5sguf")
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+use_collision = true
+radius = 0.02
+height = 0.095
+sides = 16
+material = SubResource("StandardMaterial3D_ojfuh")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+shape = SubResource("CylinderShape3D_oyvnw")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
