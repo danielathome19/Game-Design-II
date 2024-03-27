@@ -27,6 +27,7 @@ var damage_shader = preload("res://assets/shaders/take_damage.tres")
 
 var blaster
 var muzzle
+var old_blaster_y
 var dart_scene = preload("res://fps_dart.tscn")
 
 var spray_lock = 0.0  # Prevent infinite spray
@@ -49,7 +50,14 @@ func _physics_process(delta):
 
 	# Handle Jump.
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
+		velocity.y = JUMP_VELOCITY if not Input.is_action_pressed("crouch") else JUMP_VELOCITY * 1.05
+		
+	if Input.is_action_pressed("walk") or Input.is_action_pressed("crouch"):
+		SPEED = WALK_SPEED
+	else:
+		SPEED = NORMAL_SPEED
+	if damage_lock != 0.0:
+		SPEED *= 0.6
 
 	var input_dir = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
@@ -68,11 +76,17 @@ func _physics_process(delta):
 	
 	t_bob += delta * velocity.length() * float(is_on_floor())
 	var hbob = headbob(t_bob)
-	camera.transform.origin = hbob 
+	camera.transform.origin = hbob
+	blaster.position.y = clamp(old_blaster_y + (hbob.y * 0.05 if is_on_floor() else 0),
+							   old_blaster_y-0.5, old_blaster_y+0.5)
 	
 	damage_lock = max(damage_lock-delta, 0.0)
 	velocity += inertia
 	inertia = inertia.move_toward(Vector3(), delta * 1000.0)
+	
+	if Input.is_action_pressed("fire"):
+		do_fire()
+	spray_lock = max(spray_lock - delta, 0.0)
 	
 	move_and_slide()
 	
@@ -97,6 +111,25 @@ func _physics_process(delta):
 	pass
 
 
+func do_fire():
+	if spray_lock == 0.0 and AMMO > 0:
+		var dart = dart_scene.instantiate()
+		add_child(dart)
+		var spray = SPRAY_AMOUNT
+		if not is_on_floor():
+			spray *= randf_range(1.5, 5)
+		dart.do_fire(camera, muzzle, spray, ATTACK)
+		AMMO -= 1
+		spray_lock = FIRING_DELAY
+
+
+func _ready():
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	blaster = $Head/Camera3D/blaster
+	muzzle = $Head/Camera3D/blaster/muzzle
+	old_blaster_y = blaster.position.y
+
+
 func take_damage(dmg, override=false, headshot=false, _spawn_origin=null):
 	if damage_lock == 0.0 or override:
 		damage_lock = 0.5
@@ -111,10 +144,6 @@ func headbob(time):
 	pos.x = cos(time * BOB_FREQ / 2) * (BOB_AMP/2.0)
 	pos.y = sin(time * BOB_FREQ) * BOB_AMP
 	return pos
-
-
-func _ready():
-	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 
 func _unhandled_input(event):
