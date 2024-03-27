@@ -3,6 +3,7 @@ extends CharacterBody3D
 @onready var dmg_area = $DamageArea
 @onready var atk_area = $AttackArea
 @onready var nav_agent = $NavigationAgent3D
+@onready var head = $DamageArea
 
 var SPEED = 3.0
 var ACCEL = 20
