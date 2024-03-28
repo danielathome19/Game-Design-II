@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://beeyeenq2byet"]
+[gd_scene load_steps=8 format=3 uid="uid://beeyeenq2byet"]
 
 [ext_resource type="Script" path="res://fps_player_template.gd" id="1_h8c6h"]
 
@@ -14,6 +14,13 @@ metallic = 1.0
 albedo_color = Color(1, 0.207843, 0.054902, 1)
 metallic = 1.0
 metallic_specular = 1.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_jmeen"]
+font_size = 48
+font_color = Color(1, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_kl0su"]
+font_size = 24
 
 [node name="fps_player" type="CharacterBody3D" groups=["Player"]]
 script = ExtResource("1_h8c6h")
@@ -41,3 +48,70 @@ transform = Transform3D(1, 2.32831e-10, 5.82077e-11, 1.16415e-10, -2.98023e-08, 
 radius = 0.0568142
 height = 0.14681
 material = SubResource("StandardMaterial3D_aak7c")
+
+[node name="HUD" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="overlay" type="ColorRect" parent="HUD"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(1, 1, 1, 0)
+
+[node name="Crosshair" type="Label" parent="HUD"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "+"
+label_settings = SubResource("LabelSettings_jmeen")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="HUD"]
+layout_mode = 0
+offset_right = 262.0
+offset_bottom = 67.0
+text = "Health:"
+label_settings = SubResource("LabelSettings_kl0su")
+
+[node name="lblHealth" type="Label" parent="HUD/Label"]
+layout_mode = 0
+offset_left = 118.0
+offset_top = -1.0
+offset_right = 278.0
+offset_bottom = 66.0
+text = "100/100"
+label_settings = SubResource("LabelSettings_kl0su")
+
+[node name="Label2" type="Label" parent="HUD"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -265.0
+offset_bottom = 67.0
+grow_horizontal = 0
+text = "Ammo:"
+label_settings = SubResource("LabelSettings_kl0su")
+
+[node name="lblAmmo" type="Label" parent="HUD/Label2"]
+layout_mode = 0
+offset_left = 92.0
+offset_right = 231.0
+offset_bottom = 67.0
+text = "0/0"
+label_settings = SubResource("LabelSettings_kl0su")
+horizontal_alignment = 2

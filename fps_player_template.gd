@@ -42,6 +42,13 @@ var AMMO = CLIP_SIZE
 var TOTAL_AMMO = 150
 var is_reloading = false
 
+var NORMAL_HEIGHT = 2.0
+var CROUCH_HEIGHT = 1.25
+var NORMAL_COLLISION_RAD = 0.5
+var CROUCH_COLLISION_RAD = 0.8
+var NORMAL_HEAD = 0.8
+var CROUCH_HEAD = 0.4
+
 
 func _physics_process(delta):
 	# Add the gravity.
@@ -88,7 +95,41 @@ func _physics_process(delta):
 		do_fire()
 	spray_lock = max(spray_lock - delta, 0.0)
 	
+	if Input.is_action_just_pressed("reload") or \
+	  (Input.is_action_just_pressed("fire") and AMMO == 0):
+		if TOTAL_AMMO > 0 and not is_reloading and AMMO != CLIP_SIZE:
+			is_reloading = true
+			# TODO: sound
+			await get_tree().create_timer(2).timeout
+			var ammo_needed = CLIP_SIZE - AMMO
+			var new_ammo = min(ammo_needed, TOTAL_AMMO)
+			AMMO += new_ammo
+			TOTAL_AMMO -= new_ammo
+			is_reloading = false
+	
+	$HUD/Label/lblHealth.text = str(int(HEALTH)) + "/" + str(MAX_HEALTH)
+	$HUD/Label2/lblAmmo.text = str(int(AMMO)) + "/" + str(TOTAL_AMMO)
+	if damage_lock == 0.0:
+		$HUD/overlay.material = null
+	
+	if Input.is_action_pressed("crouch"):
+		$CollisionShape3D.shape.height = CROUCH_HEIGHT + 0.05
+		$CollisionShape3D.shape.radius = CROUCH_COLLISION_RAD
+		$MeshInstance3D.scale.y = CROUCH_HEIGHT/NORMAL_HEIGHT
+		$Head.position.y = lerp($Head.position.y, CROUCH_HEAD, delta*5.0)
+		SPRAY_AMOUNT = CROUCH_SPRAY_AMOUNT
+	# TODO: uncrouch
+	
 	move_and_slide()
+	
+	# TODO: health <= 0
+	
+	if len(get_tree().get_nodes_in_group("Enemy")) <= 0:
+		await get_tree().create_timer(0.25).timeout
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		OS.alert("You win!")
+		# TODO: change scene
+		get_tree().quit()
 	
 	if int(HEALTH) <= 0:
 		HEALTH = 0
