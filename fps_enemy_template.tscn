@@ -70,3 +70,13 @@ transform = Transform3D(-1, 0, -8.9407e-08, 0, 1, 0, 8.9407e-08, 0, -1, 0, 0.635
 near = 0.001
 
 [node name="RayCast3D" type="RayCast3D" parent="."]
+
+[node name="HuntTimer" type="Timer" parent="."]
+wait_time = 15.0
+
+[node name="lblHealth" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.32501, 0)
+text = "100"
+font_size = 64
+
+[connection signal="timeout" from="HuntTimer" to="." method="_on_hunt_timer_timeout"]

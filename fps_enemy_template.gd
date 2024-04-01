@@ -13,6 +13,10 @@ var knockback = 16.0
 var MAX_HEALTH = 100
 var HEALTH = MAX_HEALTH
 
+@onready var muzzle = $blaster/muzzle
+var dart_scene = preload("res://fps_dart.tscn")
+var spray_lock = 0.0
+var SPRAY_AMOUNT = 0.08  # 0.03
 
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity") * 1.5
 
@@ -21,12 +25,20 @@ func _physics_process(delta):
 	for player in get_tree().get_nodes_in_group("Player"):
 		if $AttackRange.overlaps_body(player):  # TODO: player in sight
 			nav_agent.target_position = player.global_position
-			
+			$HuntTimer.start()
+			if spray_lock == 0.0:  # and player in sight
+				var dart = dart_scene.instantiate()
+				add_child(dart)
+				dart.do_fire($Camera3D, muzzle, SPRAY_AMOUNT, ATTACK)
+				spray_lock = 0.2
+	spray_lock = max(spray_lock - delta, 0.0)
 	var dir = (nav_agent.target_position - global_position).normalized()
 	velocity = velocity.lerp(dir * SPEED, ACCEL * delta)
 	if nav_agent.target_position == Vector3.ZERO:
 		velocity = Vector3.ZERO
 	
+	$lblHealth.text = str(int(HEALTH)) + "/" + str(MAX_HEALTH)
+	$lblHealth.rotation.y = dir.x
 	if dir != Vector3.ZERO:
 		var angle_to_dir = atan2(dir.x, dir.z)
 		rotation.y = lerp_angle(rotation.y, angle_to_dir, 0.1)
@@ -41,3 +53,12 @@ func _physics_process(delta):
 func take_damage(dmg, override=false, headshot=false, spawn_origin=null):
 	if override:
 		HEALTH -= dmg
+		if spawn_origin != null:
+			if randi_range(0, 100) > 66.6:
+				nav_agent.target_position = spawn_origin
+				$HuntTimer.start()
+		# TODO: hit sound
+
+
+func _on_hunt_timer_timeout():
+	nav_agent.target_position = Vector3.ZERO  # Or a random 3d vector
