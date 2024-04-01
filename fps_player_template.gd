@@ -118,11 +118,20 @@ func _physics_process(delta):
 		$MeshInstance3D.scale.y = CROUCH_HEIGHT/NORMAL_HEIGHT
 		$Head.position.y = lerp($Head.position.y, CROUCH_HEAD, delta*5.0)
 		SPRAY_AMOUNT = CROUCH_SPRAY_AMOUNT
-	# TODO: uncrouch
-	
+	if Input.is_action_just_released("crouch"):
+		$CollisionShape3D.shape.height = NORMAL_HEIGHT
+		$CollisionShape3D.shape.radius = NORMAL_COLLISION_RAD
+		$MeshInstance3D.scale.y = 1.0
+		$Head.position.y = lerp($Head.position.y, NORMAL_HEAD, delta*5.0)
+		SPRAY_AMOUNT = NORMAL_SPRAY_AMOUNT
 	move_and_slide()
 	
-	# TODO: health <= 0
+	if int(HEALTH) <= 0:
+		HEALTH = 0
+		await get_tree().create_timer(0.25).timeout
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		OS.alert("You died!")
+		get_tree().reload_current_scene()
 	
 	if len(get_tree().get_nodes_in_group("Enemy")) <= 0:
 		await get_tree().create_timer(0.25).timeout
