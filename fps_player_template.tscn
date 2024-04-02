@@ -115,3 +115,5 @@ offset_bottom = 67.0
 text = "0/0"
 label_settings = SubResource("LabelSettings_kl0su")
 horizontal_alignment = 2
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]

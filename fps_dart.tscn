@@ -28,4 +28,8 @@ wait_time = 3.0
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
 shape = SubResource("CylinderShape3D_oyvnw")
 
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+volume_db = -15.0
+doppler_tracking = 2
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

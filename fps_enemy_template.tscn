@@ -79,4 +79,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.32501, 0)
 text = "100"
 font_size = 64
 
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+
 [connection signal="timeout" from="HuntTimer" to="." method="_on_hunt_timer_timeout"]

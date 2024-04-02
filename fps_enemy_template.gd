@@ -20,6 +20,10 @@ var SPRAY_AMOUNT = 0.08  # 0.03
 
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity") * 1.5
 
+@onready var audio_player = $AudioStreamPlayer3D
+var hit_sound = preload("res://assets/sounds/hitHurt.wav")
+var dink_sound = preload("res://assets/sounds/hitHead.wav")
+
 
 func is_player_in_sight(player):
 	var from_pos = self.global_transform.origin  # Starting point of raycast
@@ -72,7 +76,10 @@ func take_damage(dmg, override=false, headshot=false, spawn_origin=null):
 			if randi_range(0, 100) > 66.6:
 				nav_agent.target_position = spawn_origin
 				$HuntTimer.start()
-		# TODO: hit sound
+		if audio_player.playing:
+			await audio_player.finished
+		audio_player.stream = dink_sound if headshot else hit_sound
+		audio_player.play()
 
 
 func _on_hunt_timer_timeout():
