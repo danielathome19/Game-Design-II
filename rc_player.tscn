@@ -23,7 +23,6 @@ metallic = 1.0
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cquqr"]
 resource_name = "_defaultMat"
 vertex_color_use_as_albedo = true
-albedo_color = Color(1, 1, 1, 1)
 metallic = 1.0
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_aqfor"]
@@ -257,6 +256,7 @@ skeleton = NodePath("")
 
 [node name="centerMass" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.266015, 0)
+top_level = true
 
 [node name="Camera3D" type="Camera3D" parent="centerMass"]
 transform = Transform3D(1, 0, 0, 0, 0.97237, 0.233445, 0, -0.233445, 0.97237, 0, 1.6, 4)
