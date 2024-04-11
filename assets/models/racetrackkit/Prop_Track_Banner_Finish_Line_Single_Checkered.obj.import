@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://dtppua3ex0mpr"
+path="res://.godot/imported/Prop_Track_Banner_Finish_Line_Single_Checkered.obj-8a88f94a123b04f7e7230f25b238607e.mesh"
+
+[deps]
+
+files=["res://.godot/imported/Prop_Track_Banner_Finish_Line_Single_Checkered.obj-8a88f94a123b04f7e7230f25b238607e.mesh"]
+
+source_file="res://assets/models/racetrackkit/Prop_Track_Banner_Finish_Line_Single_Checkered.obj"
+dest_files=["res://.godot/imported/Prop_Track_Banner_Finish_Line_Single_Checkered.obj-8a88f94a123b04f7e7230f25b238607e.mesh", "res://.godot/imported/Prop_Track_Banner_Finish_Line_Single_Checkered.obj-8a88f94a123b04f7e7230f25b238607e.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

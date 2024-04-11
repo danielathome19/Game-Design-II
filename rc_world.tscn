@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://diw86edwsgv4p"]
+[gd_scene load_steps=8 format=3 uid="uid://diw86edwsgv4p"]
 
 [ext_resource type="PackedScene" uid="uid://be2hnw4j3m1xd" path="res://rc_player.tscn" id="1_y3exo"]
+[ext_resource type="MeshLibrary" uid="uid://bel8kh6ntsoxg" path="res://assets/meshes/road_tiles.tres" id="2_7xymx"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_1musj"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -14,10 +15,10 @@ background_mode = 2
 sky = SubResource("Sky_jhqba")
 tonemap_mode = 2
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_1pb05"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uvj6t"]
+albedo_color = Color(0, 1, 1, 1)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_prh4d"]
-albedo_color = Color(0.403922, 0.341176, 1, 1)
+[sub_resource type="SphereShape3D" id="SphereShape3D_aq18k"]
 
 [node name="rc_world" type="Node3D"]
 
@@ -28,11 +29,24 @@ shadow_enabled = true
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_gyb3a")
 
-[node name="CSGMesh3D" type="CSGMesh3D" parent="."]
-transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, 0, 0, 0)
-use_collision = true
-mesh = SubResource("PlaneMesh_1pb05")
-material = SubResource("StandardMaterial3D_prh4d")
-
 [node name="race" parent="." instance=ExtResource("1_y3exo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.103068, 2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44.7235, 0.378823, 6.10303)
+
+[node name="GridMap" type="GridMap" parent="."]
+transform = Transform3D(6, 0, 0, 0, 6, 0, 0, 0, 6, 0.064537, 0.0563869, -0.0905895)
+mesh_library = ExtResource("2_7xymx")
+cell_size = Vector3(1, 1, 1)
+cell_center_y = false
+data = {
+"cells": PackedInt32Array(6, 0, 1048774, 7, 65535, 1441952, 6, 65528, 1048736, 7, 65527, 1441954, 6, 65516, 1048738, 7, 65515, 1441929, 65546, 65513, 655497, 65549, 65516, 1441940, -65520, 65520, 138, 13, 65516, 1441942, -65517, 65521, 205, -65516, 65521, 204, -65515, 65521, 655565, -65509, 65518, 1048768, -65509, 65517, 1441984, -65505, 65514, 655498, 65570, 65518, 1048736, 131106, 65522, 1048736, 35, 65526, 1441944, 35, 65530, 1441952, 34, 65531, 1048713, 29, 0, 1441929, -131043, 1, 1441942, -65508, 2, 1048762, -65511, 4, 164, 65551, 7, 1441929, 65550, 14, 1441987, 65549, 17, 1441987, 65548, 18, 1048713, 131081, 20, 137, 6, 17, 1048728, 6, 14, 1048777, -65530, 11, 1048777, -65529, 10, 1441993, 7, 7, 1441995, 7, 6, 1441995, 7, 5, 1441995, 7, 4, 1441995, 7, 3, 1441995, 7, 2, 1441995, 7, 1, 1441995, 65551, 11, 1441995, 65551, 10, 1441995, 65551, 9, 1441995, 65551, 8, 1441995, 65540, 65532, 1441827, 10, 65516, 1441832, 327689, 65516, 655398, 65543, 65522, 1441834, 7, 0, 1441838, -65518, 65522, 655421)
+}
+metadata/_editor_floor_ = Vector3(0, -1, 0)
+
+[node name="RigidBody3D" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44.7429, 1.20993, 0)
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="RigidBody3D"]
+material = SubResource("StandardMaterial3D_uvj6t")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+shape = SubResource("SphereShape3D_aq18k")

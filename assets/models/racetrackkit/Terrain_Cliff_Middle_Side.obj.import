@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://b8tceqbc3b6vs"
+path="res://.godot/imported/Terrain_Cliff_Middle_Side.obj-641a761b065cc7b16932cda3ad9d3181.mesh"
+
+[deps]
+
+files=["res://.godot/imported/Terrain_Cliff_Middle_Side.obj-641a761b065cc7b16932cda3ad9d3181.mesh"]
+
+source_file="res://assets/models/racetrackkit/Terrain_Cliff_Middle_Side.obj"
+dest_files=["res://.godot/imported/Terrain_Cliff_Middle_Side.obj-641a761b065cc7b16932cda3ad9d3181.mesh", "res://.godot/imported/Terrain_Cliff_Middle_Side.obj-641a761b065cc7b16932cda3ad9d3181.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

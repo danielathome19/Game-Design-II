@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://y1013g54q3a3"
+path="res://.godot/imported/Prop_Decorative_Fence_Railing.obj-100a6c21440b71cea0d0b0edc80c2776.mesh"
+
+[deps]
+
+files=["res://.godot/imported/Prop_Decorative_Fence_Railing.obj-100a6c21440b71cea0d0b0edc80c2776.mesh"]
+
+source_file="res://assets/models/racetrackkit/Prop_Decorative_Fence_Railing.obj"
+dest_files=["res://.godot/imported/Prop_Decorative_Fence_Railing.obj-100a6c21440b71cea0d0b0edc80c2776.mesh", "res://.godot/imported/Prop_Decorative_Fence_Railing.obj-100a6c21440b71cea0d0b0edc80c2776.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

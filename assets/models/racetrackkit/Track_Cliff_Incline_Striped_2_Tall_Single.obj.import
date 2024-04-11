@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://dl71a7nskk23h"
+path="res://.godot/imported/Track_Cliff_Incline_Striped_2_Tall_Single.obj-32dc3eaddb63497649e0e85fcfb1df1b.mesh"
+
+[deps]
+
+files=["res://.godot/imported/Track_Cliff_Incline_Striped_2_Tall_Single.obj-32dc3eaddb63497649e0e85fcfb1df1b.mesh"]
+
+source_file="res://assets/models/racetrackkit/Track_Cliff_Incline_Striped_2_Tall_Single.obj"
+dest_files=["res://.godot/imported/Track_Cliff_Incline_Striped_2_Tall_Single.obj-32dc3eaddb63497649e0e85fcfb1df1b.mesh", "res://.godot/imported/Track_Cliff_Incline_Striped_2_Tall_Single.obj-32dc3eaddb63497649e0e85fcfb1df1b.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

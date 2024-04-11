@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://dr70qsnfbao21"
+path="res://.godot/imported/Track_Bridge_Piers.obj-d1d4ffdff65568539d11b8fe44b38f16.mesh"
+
+[deps]
+
+files=["res://.godot/imported/Track_Bridge_Piers.obj-d1d4ffdff65568539d11b8fe44b38f16.mesh"]
+
+source_file="res://assets/models/racetrackkit/Track_Bridge_Piers.obj"
+dest_files=["res://.godot/imported/Track_Bridge_Piers.obj-d1d4ffdff65568539d11b8fe44b38f16.mesh", "res://.godot/imported/Track_Bridge_Piers.obj-d1d4ffdff65568539d11b8fe44b38f16.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

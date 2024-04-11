@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://mpr32den484k"
+path="res://.godot/imported/Track_Striped_Finish_Line_Double_Blank.obj-8da856dd786ea3c56e3b3ba98011a02d.mesh"
+
+[deps]
+
+files=["res://.godot/imported/Track_Striped_Finish_Line_Double_Blank.obj-8da856dd786ea3c56e3b3ba98011a02d.mesh"]
+
+source_file="res://assets/models/racetrackkit/Track_Striped_Finish_Line_Double_Blank.obj"
+dest_files=["res://.godot/imported/Track_Striped_Finish_Line_Double_Blank.obj-8da856dd786ea3c56e3b3ba98011a02d.mesh", "res://.godot/imported/Track_Striped_Finish_Line_Double_Blank.obj-8da856dd786ea3c56e3b3ba98011a02d.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

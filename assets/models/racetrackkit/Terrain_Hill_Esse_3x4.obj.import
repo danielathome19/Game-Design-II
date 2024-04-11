@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://dhmogj6iqex1e"
+path="res://.godot/imported/Terrain_Hill_Esse_3x4.obj-f82514458cbc5029b683ccb82332c1ed.mesh"
+
+[deps]
+
+files=["res://.godot/imported/Terrain_Hill_Esse_3x4.obj-f82514458cbc5029b683ccb82332c1ed.mesh"]
+
+source_file="res://assets/models/racetrackkit/Terrain_Hill_Esse_3x4.obj"
+dest_files=["res://.godot/imported/Terrain_Hill_Esse_3x4.obj-f82514458cbc5029b683ccb82332c1ed.mesh", "res://.godot/imported/Terrain_Hill_Esse_3x4.obj-f82514458cbc5029b683ccb82332c1ed.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
