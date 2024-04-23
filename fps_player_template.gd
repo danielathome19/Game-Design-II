@@ -195,13 +195,6 @@ func _physics_process(delta):
 		# TODO: change scene
 		get_tree().quit()
 	
-	if int(HEALTH) <= 0:
-		HEALTH = 0
-		await get_tree().create_timer(0.25).timeout
-		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-		OS.alert("You died!")
-		get_tree().reload_current_scene()
-	
 	# Right Joystick
 	var joystick_index = 0
 	var deadzone = 0.1
