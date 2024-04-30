@@ -1,0 +1,113 @@
+[gd_scene load_steps=13 format=3 uid="uid://d12bgjnotm77o"]
+
+[ext_resource type="Script" path="res://rpg_player_template.gd" id="1_xvls4"]
+[ext_resource type="PackedScene" uid="uid://dnd0i7ti1q7wr" path="res://playerhud_3d.tscn" id="2_ekpf7"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_fbpll"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_688ja"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_lu3be"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_pox8r"]
+width = 256
+height = 256
+as_normal_map = true
+noise = SubResource("FastNoiseLite_lu3be")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vus7p"]
+albedo_color = Color(0.368627, 0.152941, 0, 1)
+metallic = 1.0
+metallic_specular = 0.46
+metallic_texture = SubResource("NoiseTexture2D_pox8r")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_5v6xk"]
+noise_type = 5
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_p2g63"]
+invert = true
+as_normal_map = true
+noise = SubResource("FastNoiseLite_5v6xk")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uecne"]
+albedo_color = Color(0.478431, 0.478431, 0.478431, 1)
+metallic = 1.0
+metallic_specular = 0.8
+metallic_texture = SubResource("NoiseTexture2D_p2g63")
+
+[sub_resource type="PrismMesh" id="PrismMesh_htp26"]
+size = Vector3(0.116, 0.245, 0.016)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_dhldf"]
+radius = 0.135724
+height = 1.31631
+
+[node name="rpg_player" type="CharacterBody3D" groups=["Player"]]
+script = ExtResource("1_xvls4")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.08976, 0)
+mesh = SubResource("CapsuleMesh_fbpll")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0636, 0)
+shape = SubResource("CapsuleShape3D_688ja")
+
+[node name="SpringArm3D" type="SpringArm3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.994522, 0.104528, 0, -0.104528, 0.994522, 0, 1.60664, 0)
+spring_length = 4.0
+
+[node name="Head" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.46576, 0)
+
+[node name="Camera3D" type="Camera3D" parent="Head"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0612019, 0)
+fov = 90.0
+
+[node name="Sword" type="Area3D" parent="."]
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="Sword"]
+transform = Transform3D(0.97237, -0.042542, -0.229536, 0, 0.983255, -0.182236, 0.233445, 0.1772, 0.956087, 0.17, -0.27, -0.04)
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="Sword/CSGCombiner3D"]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0.431, 1.417, -0.96558)
+radius = 0.05
+height = 0.4
+sides = 16
+material = SubResource("StandardMaterial3D_vus7p")
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Sword/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.43065, 1.41652, -0.82996)
+radius = 0.05
+height = 0.3
+sides = 16
+material = SubResource("StandardMaterial3D_vus7p")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Sword/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.431, 1.417, -1.3182)
+size = Vector3(0.115329, 0.0163852, 0.62277)
+material = SubResource("StandardMaterial3D_uecne")
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="Sword/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.430744, 1.417, -1.74896)
+mesh = SubResource("PrismMesh_htp26")
+material = SubResource("StandardMaterial3D_uecne")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sword"]
+transform = Transform3D(0.97237, 0.225491, -0.0604201, 0.0229506, 0.165227, 0.985989, 0.232315, -0.960132, 0.155486, 0.821373, 1.35195, -0.911665)
+shape = SubResource("CapsuleShape3D_dhldf")
+
+[node name="CollisionTimer" type="Timer" parent="Sword"]
+wait_time = 0.05
+
+[node name="playerhud3d" parent="." instance=ExtResource("2_ekpf7")]
+
+[node name="staminabar" type="ProgressBar" parent="playerhud3d"]
+layout_mode = 0
+offset_left = 11.0
+offset_top = 51.0
+offset_right = 243.0
+offset_bottom = 64.0
+show_percentage = false
+
+[connection signal="timeout" from="Sword/CollisionTimer" to="." method="_on_collision_timer_timeout"]
