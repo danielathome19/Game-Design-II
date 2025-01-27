@@ -1,137 +1,61 @@
-[gd_scene load_steps=25 format=3 uid="uid://i5cgx7babarg"]
+[gd_scene load_steps=9 format=3 uid="uid://d34q2dsqcgv2f"]
 
-[ext_resource type="Texture2D" uid="uid://dcptol2d2wjdw" path="res://terrain/textures/Metal046B_1K-JPG/Metal046B_1K-JPG_Color.jpg" id="1_gmruw"]
-[ext_resource type="Texture2D" uid="uid://dn4que2vl2a7b" path="res://terrain/textures/Metal046B_1K-JPG/Metal046B_1K-JPG_Metalness.jpg" id="2_wrd8v"]
-[ext_resource type="Script" path="res://addons/zylann.hterrain/hterrain.gd" id="3_qm53b"]
-[ext_resource type="PackedScene" uid="uid://d12bgjnotm77o" path="res://player_3d.tscn" id="3_r4pmc"]
-[ext_resource type="PackedScene" uid="uid://bckjjsxpywatm" path="res://enemy_3d.tscn" id="3_ucp1y"]
-[ext_resource type="Resource" path="res://terrain/data.hterrain" id="4_y6v3s"]
-[ext_resource type="Script" path="res://addons/zylann.hterrain/hterrain_texture_set.gd" id="5_corf4"]
-[ext_resource type="Texture2D" uid="uid://cm5wass2wt8ey" path="res://terrain/textures/Grass001_1K-JPG/Grass001_1K-JPG_Color.jpg" id="6_t5ppj"]
-[ext_resource type="Texture2D" uid="uid://kv3kcy104bn4" path="res://terrain/textures/Asphalt023S_1K-JPG/Asphalt023S_1K-JPG_Color.jpg" id="7_eqtkq"]
-[ext_resource type="Texture2D" uid="uid://koeswlu8tfe4" path="res://terrain/textures/Rock030_1K-JPG/Rock030_1K-JPG_Color.jpg" id="8_vex28"]
-[ext_resource type="Texture2D" uid="uid://227klwsn3d0v" path="res://terrain/textures/Grass001_1K-JPG/Grass001_1K-JPG_NormalGL.jpg" id="9_f80a1"]
-[ext_resource type="Texture2D" uid="uid://bf88yps3bhs8q" path="res://terrain/textures/Asphalt023S_1K-JPG/Asphalt023S_1K-JPG_NormalGL.jpg" id="10_e3yvp"]
-[ext_resource type="Texture2D" uid="uid://b4p0ckx100duk" path="res://terrain/textures/Rock030_1K-JPG/Rock030_1K-JPG_NormalGL.jpg" id="11_8t1nw"]
-[ext_resource type="PackedScene" uid="uid://dnd0i7ti1q7wr" path="res://playerhud_3d.tscn" id="14_77wqp"]
-[ext_resource type="PackedScene" uid="uid://3gjpuqf1myxl" path="res://goal.tscn" id="15_7brhl"]
+[ext_resource type="Script" path="res://player_3d.gd" id="1_h607c"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_rubsh"]
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ym0rk"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
 ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
 
-[sub_resource type="Sky" id="Sky_xhtu3"]
-sky_material = SubResource("ProceduralSkyMaterial_rubsh")
+[sub_resource type="Sky" id="Sky_xsddp"]
+sky_material = SubResource("ProceduralSkyMaterial_ym0rk")
 
-[sub_resource type="Environment" id="Environment_l1uxw"]
+[sub_resource type="Environment" id="Environment_cx1m0"]
 background_mode = 2
-sky = SubResource("Sky_xhtu3")
+sky = SubResource("Sky_xsddp")
 tonemap_mode = 2
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_fl2mv"]
+[sub_resource type="PlaneMesh" id="PlaneMesh_0a8cl"]
 size = Vector2(500, 500)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_74jw0"]
-albedo_color = Color(0.145098, 0.533333, 0.0941176, 1)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dwqde"]
+albedo_color = Color(0.0323412, 0.29026, 8.66354e-07, 1)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kk3j7"]
-albedo_texture = ExtResource("1_gmruw")
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_3kqij"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_obkha"]
-albedo_color = Color(0.0941176, 0.290196, 1, 0)
-metallic = 1.0
-metallic_specular = 0.67
-metallic_texture = ExtResource("2_wrd8v")
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_fq4dg"]
 
-[sub_resource type="Resource" id="Resource_0qpns"]
-script = ExtResource("5_corf4")
-mode = 0
-textures = [[ExtResource("6_t5ppj"), ExtResource("7_eqtkq"), ExtResource("8_vex28")], [ExtResource("9_f80a1"), ExtResource("10_e3yvp"), ExtResource("11_8t1nw")]]
-
-[sub_resource type="NavigationMesh" id="NavigationMesh_tsjxl"]
-agent_height = 2.0
-
-[node name="scene3d" type="Node3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.26074)
+[node name="scene_3d" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_l1uxw")
+environment = SubResource("Environment_cx1m0")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
 shadow_enabled = true
 
 [node name="CSGMesh3D" type="CSGMesh3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.376144, 0.537643, -0.434296)
+use_collision = true
+mesh = SubResource("PlaneMesh_0a8cl")
+material = SubResource("StandardMaterial3D_dwqde")
+
+[node name="player3d" type="CharacterBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.28493, 0)
+script = ExtResource("1_h607c")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="player3d"]
+mesh = SubResource("CapsuleMesh_3kqij")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="player3d"]
+shape = SubResource("CapsuleShape3D_fq4dg")
+
+[node name="Head" type="Node3D" parent="player3d"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.56511, 0)
+
+[node name="Camera3D" type="Camera3D" parent="player3d/Head"]
+current = true
+fov = 90.0
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.607684, 0.326579, -0.723924, 0.0060823, 0.909598, 0.415446, 0.794156, -0.256863, 0.550761, -14.9665, 10.7435, 12.6734)
 visible = false
-use_collision = true
-mesh = SubResource("PlaneMesh_fl2mv")
-material = SubResource("StandardMaterial3D_74jw0")
-
-[node name="CSGBox3D" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.96046e-08, 2.96384)
-material_override = SubResource("StandardMaterial3D_kk3j7")
-use_collision = true
-size = Vector3(7.04827, 1.21004, 2.73367)
-material = SubResource("StandardMaterial3D_obkha")
-
-[node name="CSGBox3D2" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.44323, 1.12734, 2.96384)
-use_collision = true
-size = Vector3(7.04827, 0.670108, 8.22973)
-material = SubResource("StandardMaterial3D_obkha")
-
-[node name="CSGBox3D3" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.9101, 1.89844, 8.61943)
-use_collision = true
-size = Vector3(7.04827, 0.670108, 4.96165)
-material = SubResource("StandardMaterial3D_obkha")
-
-[node name="enemy3d" parent="." instance=ExtResource("3_ucp1y")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.17938, -19.3097)
-
-[node name="player3d" parent="." instance=ExtResource("3_r4pmc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.77703, 0)
-
-[node name="CSGPolygon3D" type="CSGPolygon3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5187, 3.11463, 10.0052)
-use_collision = true
-polygon = PackedVector2Array(-0.594689, -1.81342, -2.65016, -1.05739, 3.0436, 2.19126, 1.59114, -0.501745)
-depth = 5.3
-
-[node name="HTerrain" type="Node3D" parent="."]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
-script = ExtResource("3_qm53b")
-centered = true
-_terrain_data = ExtResource("4_y6v3s")
-chunk_size = 32
-collision_enabled = true
-collision_layer = 1
-collision_mask = 1
-shader_type = "Classic4Lite"
-custom_shader = null
-custom_globalmap_shader = null
-texture_set = SubResource("Resource_0qpns")
-render_layers = 1
-cast_shadow = 1
-shader_params/u_ground_uv_scale = 20
-shader_params/u_depth_blending = true
-shader_params/u_triplanar = null
-shader_params/u_tile_reduction = null
-
-[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
-navigation_mesh = SubResource("NavigationMesh_tsjxl")
-
-[node name="playerhud3d" parent="." instance=ExtResource("14_77wqp")]
-
-[node name="enemy3d2" parent="." instance=ExtResource("3_ucp1y")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.66182, 1.13899, -28.0342)
-
-[node name="enemy3d3" parent="." instance=ExtResource("3_ucp1y")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.1684, 1.21942, -39.1211)
-
-[node name="enemy3d4" parent="." instance=ExtResource("3_ucp1y")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.0967, 1.23415, -17.5031)
-
-[node name="Goal" parent="." instance=ExtResource("15_7brhl")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.2292, -0.427814, 26.9008)
-next_level = "scene_3d_2"

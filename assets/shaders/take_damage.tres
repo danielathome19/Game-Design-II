@@ -1,7 +1,0 @@
-[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://d3gmpbcvxr5b"]
-
-[ext_resource type="Shader" path="res://assets/shaders/take_damage.gdshader" id="1_oeqn4"]
-
-[resource]
-shader = ExtResource("1_oeqn4")
-shader_parameter/intensity = null
