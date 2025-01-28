@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://d34q2dsqcgv2f"]
+[gd_scene load_steps=12 format=3 uid="uid://d34q2dsqcgv2f"]
 
 [ext_resource type="Script" path="res://player_3d.gd" id="1_h607c"]
 
@@ -24,6 +24,15 @@ albedo_color = Color(0.0323412, 0.29026, 8.66354e-07, 1)
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_fq4dg"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ouiaf"]
+albedo_color = Color(0.415686, 0.254902, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yy8ga"]
+albedo_color = Color(0.360784, 0.0588235, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h8ex6"]
+albedo_color = Color(0.449814, 0.76814, 0.625931, 1)
+
 [node name="scene_3d" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -40,7 +49,7 @@ mesh = SubResource("PlaneMesh_0a8cl")
 material = SubResource("StandardMaterial3D_dwqde")
 
 [node name="player3d" type="CharacterBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.28493, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.66469, 0)
 script = ExtResource("1_h607c")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="player3d"]
@@ -59,3 +68,26 @@ fov = 90.0
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(0.607684, 0.326579, -0.723924, 0.0060823, 0.909598, 0.415446, 0.794156, -0.256863, 0.550761, -14.9665, 10.7435, 12.6734)
 visible = false
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.987854, 0.968419, -7.54521)
+use_collision = true
+size = Vector3(11.1603, 1, 7.28906)
+material = SubResource("StandardMaterial3D_ouiaf")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="."]
+transform = Transform3D(0.432983, 0, 0.901402, 0, 1, 0, -0.901402, 0, 0.432983, -8.25307, 1.9719, -3.19193)
+use_collision = true
+size = Vector3(11.1603, 1, 7.28906)
+material = SubResource("StandardMaterial3D_yy8ga")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="."]
+transform = Transform3D(0.432983, 0, 0.901402, 0, 1, 0, -0.901402, 0, 0.432983, -16.0928, 2.82276, -18.3037)
+use_collision = true
+size = Vector3(11.1603, 0.61084, 26.8076)
+material = SubResource("StandardMaterial3D_h8ex6")
+
+[node name="CSGPolygon3D" type="CSGPolygon3D" parent="."]
+transform = Transform3D(-0.991615, -0.129228, 0, 0.0117235, -0.0899587, 0.995876, -0.128695, 0.987526, 0.0907194, 0.101913, 3.63191, -21.6003)
+use_collision = true
+polygon = PackedVector2Array(4.56537, 2.54552, -21.1245, -5.84088, 7.21223, -6.0765)
