@@ -53,6 +53,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.66469, 0)
 script = ExtResource("1_h607c")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="player3d"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0334005, 0)
 mesh = SubResource("CapsuleMesh_3kqij")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="player3d"]
@@ -88,6 +89,6 @@ size = Vector3(11.1603, 0.61084, 26.8076)
 material = SubResource("StandardMaterial3D_h8ex6")
 
 [node name="CSGPolygon3D" type="CSGPolygon3D" parent="."]
-transform = Transform3D(-0.991615, -0.129228, 0, 0.0117235, -0.0899587, 0.995876, -0.128695, 0.987526, 0.0907194, 0.101913, 3.63191, -21.6003)
+transform = Transform3D(-0.991615, -0.129228, 0, 0.0117235, -0.0899587, 0.995876, -0.128695, 0.987526, 0.0907194, 0.101913, 3.94081, -21.6003)
 use_collision = true
 polygon = PackedVector2Array(4.56537, 2.54552, -21.1245, -5.84088, 7.21223, -6.0765)

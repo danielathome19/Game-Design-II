@@ -9,6 +9,7 @@ const CAM_SENSITIVITY = 0.03
 
 var first_person = true
 
+
 const BOB_FREQ = 2.4
 const BOB_AMP = 0.08
 var t_bob = 0.0
