@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://uwr0qp1x08r4"]
+
+[ext_resource type="Script" path="res://player_3d.gd" id="1_bemgm"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_3kqij"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_fq4dg"]
+
+[node name="player3d" type="CharacterBody3D"]
+script = ExtResource("1_bemgm")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0334005, 0)
+mesh = SubResource("CapsuleMesh_3kqij")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_fq4dg")
+
+[node name="SpringArm3D" type="SpringArm3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.994522, 0.104528, 0, -0.104528, 0.994522, 0, 0.61, 0)
+spring_length = 6.0
+
+[node name="Head" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.56511, 0)
+
+[node name="Camera3D" type="Camera3D" parent="Head"]
+current = true
+fov = 90.0
