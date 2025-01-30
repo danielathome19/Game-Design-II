@@ -1,18 +1,33 @@
-[gd_scene load_steps=10 format=3 uid="uid://d34q2dsqcgv2f"]
+[gd_scene load_steps=23 format=3 uid="uid://d34q2dsqcgv2f"]
 
+[ext_resource type="Texture2D" uid="uid://u2jb4vgikkws" path="res://assets/textures/DaySkyHDRI015A_1K-TONEMAPPED.jpg" id="1_02usc"]
 [ext_resource type="PackedScene" uid="uid://uwr0qp1x08r4" path="res://player_3d.tscn" id="1_4aygx"]
+[ext_resource type="Script" path="res://addons/zylann.hterrain/hterrain.gd" id="2_k6pe7"]
+[ext_resource type="Resource" path="res://assets/terrains/scene_3d/data.hterrain" id="3_vv8gc"]
+[ext_resource type="Script" path="res://addons/zylann.hterrain/hterrain_texture_set.gd" id="4_1e2s4"]
+[ext_resource type="Texture2D" uid="uid://bxv47j5h8bxis" path="res://assets/textures/Asphalt031_1K-JPG/Asphalt031_1K-JPG_Color.jpg" id="5_7pm5f"]
+[ext_resource type="Texture2D" uid="uid://wyg7rf1jothe" path="res://assets/textures/Grass001_1K-JPG/Grass001_1K-JPG_Color.jpg" id="6_o13nd"]
+[ext_resource type="Texture2D" uid="uid://dg06llrom11di" path="res://assets/textures/Gravel041_1K-JPG/Gravel041_1K-JPG_Color.jpg" id="7_ka6vu"]
+[ext_resource type="Texture2D" uid="uid://das54ekeyowr5" path="res://assets/textures/Ground068_1K-JPG/Ground068_1K-JPG_Color.jpg" id="8_bamo6"]
+[ext_resource type="Texture2D" uid="uid://d0nbff2mwqajl" path="res://assets/textures/Asphalt031_1K-JPG/Asphalt031_1K-JPG_NormalGL.jpg" id="9_mbm1x"]
+[ext_resource type="Texture2D" uid="uid://dog3y0i67yout" path="res://assets/textures/Grass001_1K-JPG/Grass001_1K-JPG_NormalGL.jpg" id="10_ixsq6"]
+[ext_resource type="Texture2D" uid="uid://ctpsq6b113sg4" path="res://assets/textures/Gravel041_1K-JPG/Gravel041_1K-JPG_NormalGL.jpg" id="11_u3h27"]
+[ext_resource type="Texture2D" uid="uid://bkfvfyergd4hi" path="res://assets/textures/Ground068_1K-JPG/Ground068_1K-JPG_NormalGL.jpg" id="12_6fwpp"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ym0rk"]
-sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
-ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_1wh4y"]
+panorama = ExtResource("1_02usc")
 
 [sub_resource type="Sky" id="Sky_xsddp"]
-sky_material = SubResource("ProceduralSkyMaterial_ym0rk")
+sky_material = SubResource("PanoramaSkyMaterial_1wh4y")
 
 [sub_resource type="Environment" id="Environment_cx1m0"]
 background_mode = 2
 sky = SubResource("Sky_xsddp")
 tonemap_mode = 2
+fog_enabled = true
+fog_mode = 1
+fog_light_color = Color(0.278274, 0.406422, 0.46154, 1)
+fog_density = 0.2712
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_0a8cl"]
 size = Vector2(500, 500)
@@ -29,6 +44,11 @@ albedo_color = Color(0.360784, 0.0588235, 1, 1)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h8ex6"]
 albedo_color = Color(0.449814, 0.76814, 0.625931, 1)
 
+[sub_resource type="Resource" id="Resource_mey23"]
+script = ExtResource("4_1e2s4")
+mode = 0
+textures = [[ExtResource("5_7pm5f"), ExtResource("6_o13nd"), ExtResource("7_ka6vu"), ExtResource("8_bamo6")], [ExtResource("9_mbm1x"), ExtResource("10_ixsq6"), ExtResource("11_u3h27"), ExtResource("12_6fwpp")]]
+
 [node name="scene_3d" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -40,6 +60,7 @@ shadow_enabled = true
 
 [node name="CSGMesh3D" type="CSGMesh3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.376144, 0.537643, -0.434296)
+visible = false
 use_collision = true
 mesh = SubResource("PlaneMesh_0a8cl")
 material = SubResource("StandardMaterial3D_dwqde")
@@ -73,3 +94,22 @@ material = SubResource("StandardMaterial3D_h8ex6")
 transform = Transform3D(-0.991615, -0.129228, 0, 0.0117235, -0.0899587, 0.995876, -0.128695, 0.987526, 0.0907194, 0.101913, 3.94081, -21.6003)
 use_collision = true
 polygon = PackedVector2Array(4.56537, 2.54552, -21.1245, -5.84088, 7.21223, -6.0765)
+
+[node name="HTerrain" type="Node3D" parent="."]
+script = ExtResource("2_k6pe7")
+centered = true
+_terrain_data = ExtResource("3_vv8gc")
+chunk_size = 32
+collision_enabled = true
+collision_layer = 1
+collision_mask = 1
+shader_type = "Classic4Lite"
+custom_shader = null
+custom_globalmap_shader = null
+texture_set = SubResource("Resource_mey23")
+render_layers = 1
+cast_shadow = 1
+shader_params/u_ground_uv_scale = 20
+shader_params/u_depth_blending = true
+shader_params/u_triplanar = null
+shader_params/u_tile_reduction = null
