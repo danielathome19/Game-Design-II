@@ -1,0 +1,46 @@
+[gd_scene load_steps=8 format=3 uid="uid://bhww1e4srs600"]
+
+[ext_resource type="Script" path="res://enemy_3d.gd" id="1_ies0g"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_qp6c0"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vgot2"]
+albedo_color = Color(1, 0.175247, 0.190204, 1)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_2p453"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_ulmdo"]
+radius = 8.0
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_1x306"]
+radius = 0.75
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_hn23e"]
+
+[node name="enemy3d" type="CharacterBody3D" groups=["Enemy"]]
+script = ExtResource("1_ies0g")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_qp6c0")
+surface_material_override/0 = SubResource("StandardMaterial3D_vgot2")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_2p453")
+
+[node name="AttackRange" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AttackRange"]
+shape = SubResource("CylinderShape3D_ulmdo")
+
+[node name="AttackArea" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AttackArea"]
+shape = SubResource("CapsuleShape3D_1x306")
+
+[node name="DamageArea" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DamageArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.718291, 0)
+shape = SubResource("SphereShape3D_hn23e")

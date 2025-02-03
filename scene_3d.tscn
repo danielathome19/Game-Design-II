@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://d34q2dsqcgv2f"]
+[gd_scene load_steps=25 format=3 uid="uid://d34q2dsqcgv2f"]
 
 [ext_resource type="Texture2D" uid="uid://u2jb4vgikkws" path="res://assets/textures/DaySkyHDRI015A_1K-TONEMAPPED.jpg" id="1_02usc"]
 [ext_resource type="PackedScene" uid="uid://uwr0qp1x08r4" path="res://player_3d.tscn" id="1_4aygx"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://dog3y0i67yout" path="res://assets/textures/Grass001_1K-JPG/Grass001_1K-JPG_NormalGL.jpg" id="10_ixsq6"]
 [ext_resource type="Texture2D" uid="uid://ctpsq6b113sg4" path="res://assets/textures/Gravel041_1K-JPG/Gravel041_1K-JPG_NormalGL.jpg" id="11_u3h27"]
 [ext_resource type="Texture2D" uid="uid://bkfvfyergd4hi" path="res://assets/textures/Ground068_1K-JPG/Ground068_1K-JPG_NormalGL.jpg" id="12_6fwpp"]
+[ext_resource type="PackedScene" uid="uid://bhww1e4srs600" path="res://enemy_3d.tscn" id="14_3t2of"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_1wh4y"]
 panorama = ExtResource("1_02usc")
@@ -48,6 +49,9 @@ albedo_color = Color(0.449814, 0.76814, 0.625931, 1)
 script = ExtResource("4_1e2s4")
 mode = 0
 textures = [[ExtResource("5_7pm5f"), ExtResource("6_o13nd"), ExtResource("7_ka6vu"), ExtResource("8_bamo6")], [ExtResource("9_mbm1x"), ExtResource("10_ixsq6"), ExtResource("11_u3h27"), ExtResource("12_6fwpp")]]
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_yxjwg"]
+agent_height = 2.0
 
 [node name="scene_3d" type="Node3D"]
 
@@ -113,3 +117,21 @@ shader_params/u_ground_uv_scale = 20
 shader_params/u_depth_blending = true
 shader_params/u_triplanar = null
 shader_params/u_tile_reduction = null
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+navigation_mesh = SubResource("NavigationMesh_yxjwg")
+
+[node name="enemy3d" parent="." instance=ExtResource("14_3t2of")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.9097, 1.54572, 18.8192)
+
+[node name="enemy3d2" parent="." instance=ExtResource("14_3t2of")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.5925, 0.204619, 6.77136)
+
+[node name="enemy3d3" parent="." instance=ExtResource("14_3t2of")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.9372, 0.753324, 18.1194)
+
+[node name="enemy3d4" parent="." instance=ExtResource("14_3t2of")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.98231, 0.975766, 30.8685)
+
+[node name="enemy3d5" parent="." instance=ExtResource("14_3t2of")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.3925, 1.29233, -1.96894)
