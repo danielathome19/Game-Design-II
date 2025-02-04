@@ -1,7 +1,8 @@
-[gd_scene load_steps=25 format=3 uid="uid://d34q2dsqcgv2f"]
+[gd_scene load_steps=24 format=3 uid="uid://d34q2dsqcgv2f"]
 
 [ext_resource type="Texture2D" uid="uid://u2jb4vgikkws" path="res://assets/textures/DaySkyHDRI015A_1K-TONEMAPPED.jpg" id="1_02usc"]
 [ext_resource type="PackedScene" uid="uid://uwr0qp1x08r4" path="res://player_3d.tscn" id="1_4aygx"]
+[ext_resource type="PackedScene" uid="uid://diohlnu7i3bkj" path="res://playerhud_3d.tscn" id="1_r0xq2"]
 [ext_resource type="Script" path="res://addons/zylann.hterrain/hterrain.gd" id="2_k6pe7"]
 [ext_resource type="Resource" path="res://assets/terrains/scene_3d/data.hterrain" id="3_vv8gc"]
 [ext_resource type="Script" path="res://addons/zylann.hterrain/hterrain_texture_set.gd" id="4_1e2s4"]
@@ -30,12 +31,6 @@ fog_mode = 1
 fog_light_color = Color(0.278274, 0.406422, 0.46154, 1)
 fog_density = 0.2712
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_0a8cl"]
-size = Vector2(500, 500)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dwqde"]
-albedo_color = Color(0.0323412, 0.29026, 8.66354e-07, 1)
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ouiaf"]
 albedo_color = Color(0.415686, 0.254902, 1, 1)
 
@@ -55,19 +50,14 @@ agent_height = 2.0
 
 [node name="scene_3d" type="Node3D"]
 
+[node name="playerhud_3d" parent="." instance=ExtResource("1_r0xq2")]
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_cx1m0")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
 shadow_enabled = true
-
-[node name="CSGMesh3D" type="CSGMesh3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.376144, 0.537643, -0.434296)
-visible = false
-use_collision = true
-mesh = SubResource("PlaneMesh_0a8cl")
-material = SubResource("StandardMaterial3D_dwqde")
 
 [node name="player3d" parent="." instance=ExtResource("1_4aygx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.83926, 0)

@@ -9,6 +9,11 @@ var ACCEL = 20
 var ATTACK = 10
 var KNOCKBACK = 16.0
 
+
+func take_damage(_dmg):
+	self.queue_free()
+
+
 func _physics_process(delta: float) -> void:
 	for player in get_tree().get_nodes_in_group("Player"):
 		if $AttackRange.overlaps_body(player):

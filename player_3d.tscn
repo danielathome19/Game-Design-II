@@ -1,10 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://uwr0qp1x08r4"]
+[gd_scene load_steps=5 format=3 uid="uid://uwr0qp1x08r4"]
 
 [ext_resource type="Script" path="res://player_3d.gd" id="1_bemgm"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_3kqij"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_fq4dg"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_x6nuu"]
+height = 0.5
 
 [node name="player3d" type="CharacterBody3D" groups=["Player"]]
 script = ExtResource("1_bemgm")
@@ -26,3 +29,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.56511, 0)
 [node name="Camera3D" type="Camera3D" parent="Head"]
 current = true
 fov = 90.0
+
+[node name="Feet" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Feet"]
+transform = Transform3D(-1.3027e-15, 4.37114e-08, 1, -1.39091e-08, -1, 4.37114e-08, 1, -1.39091e-08, 1.91069e-15, 0, -0.742187, 0)
+shape = SubResource("CylinderShape3D_x6nuu")
