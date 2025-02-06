@@ -44,3 +44,7 @@ shape = SubResource("CapsuleShape3D_1x306")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DamageArea"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.718291, 0)
 shape = SubResource("SphereShape3D_hn23e")
+
+[node name="WanderTimer" type="Timer" parent="."]
+
+[connection signal="timeout" from="WanderTimer" to="." method="_on_wander_timer_timeout"]

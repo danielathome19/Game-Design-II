@@ -129,4 +129,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.3925, 1.29233, -1.96894)
 
 [node name="Goal" parent="." instance=ExtResource("16_gm1ww")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.1796, 16.297, -54.9663)
-next_level = "hello"
+next_level = "scene_3d_2"

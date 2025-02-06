@@ -1,0 +1,94 @@
+[gd_scene load_steps=20 format=3 uid="uid://b1gkhql6skq7l"]
+
+[ext_resource type="PackedScene" uid="uid://diohlnu7i3bkj" path="res://playerhud_3d.tscn" id="1_urcuv"]
+[ext_resource type="Texture2D" uid="uid://bqn60qg1pgw66" path="res://assets/textures/NightSkyHDRI008_1K-TONEMAPPED.jpg" id="2_nacce"]
+[ext_resource type="Script" path="res://addons/zylann.hterrain/hterrain.gd" id="2_ywu4r"]
+[ext_resource type="Resource" path="res://assets/terrains/scene_3d_2/data.hterrain" id="3_jtlmy"]
+[ext_resource type="Script" path="res://addons/zylann.hterrain/hterrain_texture_set.gd" id="4_opflb"]
+[ext_resource type="PackedScene" uid="uid://uwr0qp1x08r4" path="res://player_3d.tscn" id="5_ko1i2"]
+[ext_resource type="Texture2D" uid="uid://bgqhjbpi5d4rt" path="res://assets/textures/Ground079S_1K-JPG/Ground079S_1K-JPG_Color.jpg" id="6_k1rty"]
+[ext_resource type="Texture2D" uid="uid://cy6y008khciup" path="res://assets/textures/PavingStones142_1K-JPG/PavingStones142_1K-JPG_Color.jpg" id="7_r4rb2"]
+[ext_resource type="Texture2D" uid="uid://boarqvjcypp70" path="res://assets/textures/Rock051_1K-JPG/Rock051_1K-JPG_Color.jpg" id="8_e8jhm"]
+[ext_resource type="Texture2D" uid="uid://dtfgficdqgaxx" path="res://assets/textures/Ground079S_1K-JPG/Ground079S_1K-JPG_NormalGL.jpg" id="9_cmchf"]
+[ext_resource type="Texture2D" uid="uid://b6518epkqi7vv" path="res://assets/textures/PavingStones142_1K-JPG/PavingStones142_1K-JPG_NormalGL.jpg" id="10_trdw3"]
+[ext_resource type="Texture2D" uid="uid://r4xjb6qxoiy" path="res://assets/textures/Rock051_1K-JPG/Rock051_1K-JPG_NormalGL.jpg" id="11_kehyi"]
+[ext_resource type="PackedScene" uid="uid://bhww1e4srs600" path="res://enemy_3d.tscn" id="13_h7k6g"]
+[ext_resource type="PackedScene" uid="uid://d3lcxu02oeis0" path="res://goal.tscn" id="14_erbtw"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_3r822"]
+panorama = ExtResource("2_nacce")
+
+[sub_resource type="Sky" id="Sky_1rdio"]
+sky_material = SubResource("PanoramaSkyMaterial_3r822")
+
+[sub_resource type="Environment" id="Environment_07ybv"]
+background_mode = 2
+sky = SubResource("Sky_1rdio")
+ambient_light_source = 3
+ambient_light_energy = 6.53
+tonemap_mode = 2
+glow_enabled = true
+glow_intensity = 1.38
+glow_bloom = 0.45
+
+[sub_resource type="Resource" id="Resource_qctva"]
+script = ExtResource("4_opflb")
+mode = 0
+textures = [[ExtResource("6_k1rty"), ExtResource("7_r4rb2"), ExtResource("8_e8jhm")], [ExtResource("9_cmchf"), ExtResource("10_trdw3"), ExtResource("11_kehyi")]]
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_uhy1t"]
+
+[node name="scene_3d_2" type="Node3D"]
+
+[node name="playerhud_3d" parent="." instance=ExtResource("1_urcuv")]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_07ybv")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+light_color = Color(0.359069, 0.359069, 0.359069, 1)
+shadow_enabled = true
+
+[node name="HTerrain" type="Node3D" parent="."]
+script = ExtResource("2_ywu4r")
+centered = true
+_terrain_data = ExtResource("3_jtlmy")
+chunk_size = 32
+collision_enabled = true
+collision_layer = 1
+collision_mask = 1
+shader_type = "Classic4Lite"
+custom_shader = null
+custom_globalmap_shader = null
+texture_set = SubResource("Resource_qctva")
+render_layers = 1
+cast_shadow = 1
+shader_params/u_ground_uv_scale = 20
+shader_params/u_depth_blending = true
+shader_params/u_triplanar = null
+shader_params/u_tile_reduction = null
+
+[node name="player3d" parent="." instance=ExtResource("5_ko1i2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0527167, 1.2577, -0.919009)
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+navigation_mesh = SubResource("NavigationMesh_uhy1t")
+
+[node name="enemy3d" parent="." instance=ExtResource("13_h7k6g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -71.0489, 1.58244, 19.5798)
+
+[node name="enemy3d2" parent="." instance=ExtResource("13_h7k6g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.5441, 7.7806, 28.8393)
+
+[node name="enemy3d3" parent="." instance=ExtResource("13_h7k6g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39.591, 3.29707, -45.4394)
+
+[node name="enemy3d4" parent="." instance=ExtResource("13_h7k6g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 153.741, 6.14409, -58.5147)
+
+[node name="Goal" parent="." instance=ExtResource("14_erbtw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 147.003, 4.0083, -167.096)
+
+[node name="enemy3d5" parent="." instance=ExtResource("13_h7k6g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 83.4843, 3.79728, -124.82)
