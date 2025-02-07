@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://b1gkhql6skq7l"]
+[gd_scene load_steps=23 format=3 uid="uid://b1gkhql6skq7l"]
 
 [ext_resource type="PackedScene" uid="uid://diohlnu7i3bkj" path="res://playerhud_3d.tscn" id="1_urcuv"]
 [ext_resource type="Texture2D" uid="uid://bqn60qg1pgw66" path="res://assets/textures/NightSkyHDRI008_1K-TONEMAPPED.jpg" id="2_nacce"]
@@ -14,6 +14,8 @@
 [ext_resource type="Texture2D" uid="uid://r4xjb6qxoiy" path="res://assets/textures/Rock051_1K-JPG/Rock051_1K-JPG_NormalGL.jpg" id="11_kehyi"]
 [ext_resource type="PackedScene" uid="uid://bhww1e4srs600" path="res://enemy_3d.tscn" id="13_h7k6g"]
 [ext_resource type="PackedScene" uid="uid://d3lcxu02oeis0" path="res://goal.tscn" id="14_erbtw"]
+[ext_resource type="PackedScene" uid="uid://cg8o62ywcfhoc" path="res://kick_ball.tscn" id="15_3j5qb"]
+[ext_resource type="PackedScene" uid="uid://dmk634rt1t4es" path="res://push_block.tscn" id="16_jm62o"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_3r822"]
 panorama = ExtResource("2_nacce")
@@ -37,6 +39,9 @@ mode = 0
 textures = [[ExtResource("6_k1rty"), ExtResource("7_r4rb2"), ExtResource("8_e8jhm")], [ExtResource("9_cmchf"), ExtResource("10_trdw3"), ExtResource("11_kehyi")]]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_uhy1t"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_y31gb"]
+radius = 3.0
 
 [node name="scene_3d_2" type="Node3D"]
 
@@ -92,3 +97,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 147.003, 4.0083, -167.096)
 
 [node name="enemy3d5" parent="." instance=ExtResource("13_h7k6g")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 83.4843, 3.79728, -124.82)
+
+[node name="KickBall" parent="." instance=ExtResource("15_3j5qb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.59175, 1.21408, 2.73428)
+
+[node name="PushBlock" parent="." instance=ExtResource("16_jm62o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.73055, 1.97827, -3.37749)
+
+[node name="SoftBody3D" type="SoftBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.37162, 6.64641, 0)
+mesh = SubResource("SphereMesh_y31gb")

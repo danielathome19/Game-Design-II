@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://d34q2dsqcgv2f"]
+[gd_scene load_steps=28 format=3 uid="uid://d34q2dsqcgv2f"]
 
 [ext_resource type="Texture2D" uid="uid://u2jb4vgikkws" path="res://assets/textures/DaySkyHDRI015A_1K-TONEMAPPED.jpg" id="1_02usc"]
 [ext_resource type="PackedScene" uid="uid://uwr0qp1x08r4" path="res://player_3d.tscn" id="1_4aygx"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://addons/zylann.hterrain/hterrain.gd" id="2_k6pe7"]
 [ext_resource type="Resource" path="res://assets/terrains/scene_3d/data.hterrain" id="3_vv8gc"]
 [ext_resource type="Script" path="res://addons/zylann.hterrain/hterrain_texture_set.gd" id="4_1e2s4"]
+[ext_resource type="Texture2D" uid="uid://by2nn8fu7qgrr" path="res://assets/textures/Ground054_1K-JPG/Ground054_1K-JPG_Color.jpg" id="4_wwvum"]
 [ext_resource type="Texture2D" uid="uid://bxv47j5h8bxis" path="res://assets/textures/Asphalt031_1K-JPG/Asphalt031_1K-JPG_Color.jpg" id="5_7pm5f"]
 [ext_resource type="Texture2D" uid="uid://wyg7rf1jothe" path="res://assets/textures/Grass001_1K-JPG/Grass001_1K-JPG_Color.jpg" id="6_o13nd"]
 [ext_resource type="Texture2D" uid="uid://dg06llrom11di" path="res://assets/textures/Gravel041_1K-JPG/Gravel041_1K-JPG_Color.jpg" id="7_ka6vu"]
@@ -38,8 +39,14 @@ albedo_color = Color(0.415686, 0.254902, 1, 1)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yy8ga"]
 albedo_color = Color(0.360784, 0.0588235, 1, 1)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fyxv3"]
+albedo_texture = ExtResource("4_wwvum")
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h8ex6"]
 albedo_color = Color(0.449814, 0.76814, 0.625931, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wxbjh"]
+albedo_texture = ExtResource("5_7pm5f")
 
 [sub_resource type="Resource" id="Resource_mey23"]
 script = ExtResource("4_1e2s4")
@@ -81,12 +88,14 @@ material = SubResource("StandardMaterial3D_yy8ga")
 
 [node name="CSGBox3D3" type="CSGBox3D" parent="."]
 transform = Transform3D(0.432983, 0, 0.901402, 0, 1, 0, -0.901402, 0, 0.432983, -16.0928, 2.82276, -18.3037)
+material_override = SubResource("StandardMaterial3D_fyxv3")
 use_collision = true
 size = Vector3(11.1603, 0.61084, 26.8076)
 material = SubResource("StandardMaterial3D_h8ex6")
 
 [node name="CSGPolygon3D" type="CSGPolygon3D" parent="."]
 transform = Transform3D(-0.991615, -0.129228, 0, 0.0117235, -0.0899587, 0.995876, -0.128695, 0.987526, 0.0907194, 0.101913, 3.94081, -21.6003)
+material_override = SubResource("StandardMaterial3D_wxbjh")
 use_collision = true
 polygon = PackedVector2Array(4.56537, 2.54552, -21.1245, -5.84088, 7.21223, -6.0765)
 

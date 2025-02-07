@@ -19,6 +19,8 @@ const BOB_FREQ = 2.4
 const BOB_AMP = 0.08
 var t_bob = 0.0
 
+var PUSH_FORCE = 25.0
+
 var inertia = Vector3.ZERO
 var MAX_HEALTH = 50
 var HEALTH = MAX_HEALTH
@@ -108,6 +110,13 @@ func _physics_process(delta: float) -> void:
 	
 	if self.global_position.y <= -50:
 		take_damage(HEALTH)
+	
+	for i in range(get_slide_collision_count()):
+		var c = get_slide_collision(i)
+		var col = c.get_collider()
+		if col is RigidBody3D and col.is_in_group("Interact") and is_on_floor():
+			col.apply_central_force(-c.get_normal() * PUSH_FORCE)
+			# col.apply_central_impulse(-c.get_normal() * PUSH_FORCE)
 	
 	move_and_slide()
 
