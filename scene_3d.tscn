@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://d34q2dsqcgv2f"]
+[gd_scene load_steps=29 format=3 uid="uid://d34q2dsqcgv2f"]
 
 [ext_resource type="Texture2D" uid="uid://u2jb4vgikkws" path="res://assets/textures/DaySkyHDRI015A_1K-TONEMAPPED.jpg" id="1_02usc"]
 [ext_resource type="PackedScene" uid="uid://uwr0qp1x08r4" path="res://player_3d.tscn" id="1_4aygx"]
@@ -17,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://bkfvfyergd4hi" path="res://assets/textures/Ground068_1K-JPG/Ground068_1K-JPG_NormalGL.jpg" id="12_6fwpp"]
 [ext_resource type="PackedScene" uid="uid://bhww1e4srs600" path="res://enemy_3d.tscn" id="14_3t2of"]
 [ext_resource type="PackedScene" uid="uid://d3lcxu02oeis0" path="res://goal.tscn" id="16_gm1ww"]
+[ext_resource type="PackedScene" uid="uid://bi60y0tbjdeq0" path="res://assets/models/fantasy_town/sketchfab_scene.tscn" id="18_tu1o8"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_1wh4y"]
 panorama = ExtResource("1_02usc")
@@ -139,3 +140,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.3925, 1.29233, -1.96894)
 [node name="Goal" parent="." instance=ExtResource("16_gm1ww")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.1796, 16.297, -54.9663)
 next_level = "scene_3d_2"
+
+[node name="Sketchfab_Scene" parent="." instance=ExtResource("18_tu1o8")]
+transform = Transform3D(15.485, 0, 0, 0, 15.485, 0, 0, 0, 15.485, 47.6627, 0, 13.9674)
