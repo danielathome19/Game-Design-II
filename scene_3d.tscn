@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://d34q2dsqcgv2f"]
+[gd_scene load_steps=30 format=3 uid="uid://d34q2dsqcgv2f"]
 
 [ext_resource type="Texture2D" uid="uid://u2jb4vgikkws" path="res://assets/textures/DaySkyHDRI015A_1K-TONEMAPPED.jpg" id="1_02usc"]
 [ext_resource type="PackedScene" uid="uid://uwr0qp1x08r4" path="res://player_3d.tscn" id="1_4aygx"]
@@ -18,6 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://bhww1e4srs600" path="res://enemy_3d.tscn" id="14_3t2of"]
 [ext_resource type="PackedScene" uid="uid://d3lcxu02oeis0" path="res://goal.tscn" id="16_gm1ww"]
 [ext_resource type="PackedScene" uid="uid://bi60y0tbjdeq0" path="res://assets/models/fantasy_town/sketchfab_scene.tscn" id="18_tu1o8"]
+[ext_resource type="PackedScene" uid="uid://ujfy2q2qwa51" path="res://assets/models/tinkercad/Brave Juttuli-Albar.glb" id="19_at75t"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_1wh4y"]
 panorama = ExtResource("1_02usc")
@@ -143,3 +144,6 @@ next_level = "scene_3d_2"
 
 [node name="Sketchfab_Scene" parent="." instance=ExtResource("18_tu1o8")]
 transform = Transform3D(15.485, 0, 0, 0, 15.485, 0, 0, 0, 15.485, 47.6627, 0, 13.9674)
+
+[node name="Tinkercad GLTF Scene" parent="." instance=ExtResource("19_at75t")]
+transform = Transform3D(0.726994, 0, 0.686644, 0, 1, 0, -0.686644, 0, 0.726994, -201.932, 7.49522, -201.142)
