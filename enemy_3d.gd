@@ -30,9 +30,12 @@ func _physics_process(delta: float) -> void:
 			player.inertia = (player.global_position-self.global_position) \
 							  .normalized() * KNOCKBACK
 			await animator.animation_finished
-	var dir = (nav_agent.target_position-self.global_position).normalized()
-	velocity = velocity.lerp(dir * SPEED, ACCEL * delta)
-	# TODO: rotate 3d model toward player
+	var dir = (nav_agent.target_position-self.global_position)
+	dir.y = 0
+	if dir.length() > 0.01:
+		var rot_angle = atan2(dir.x, dir.z)
+		self.rotation.y = lerp_angle(rotation.y, rot_angle, 5 * delta)
+	velocity = velocity.lerp(dir.normalized() * SPEED, ACCEL * delta)
 	
 	if not is_on_floor():
 		velocity += get_gravity() * delta
