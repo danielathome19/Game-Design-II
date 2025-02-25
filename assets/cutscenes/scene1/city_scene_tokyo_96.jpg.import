@@ -1,0 +1,38 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://c6n17vb1quq11"
+path.s3tc="res://.godot/imported/city_scene_tokyo_96.jpg-48c979ac9699d7d71162fcd618d579b1.s3tc.ctex"
+metadata={
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
+}
+generator_parameters={
+"md5": "15329b0046fa0067f7cc2ae3a5797ffd"
+}
+
+[deps]
+
+source_file="res://assets/cutscenes/scene1/city_scene_tokyo_96.jpg"
+dest_files=["res://.godot/imported/city_scene_tokyo_96.jpg-48c979ac9699d7d71162fcd618d579b1.s3tc.ctex"]
+
+[params]
+
+compress/mode=2
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/normal_map=0
+compress/channel_pack=0
+mipmaps/generate=true
+mipmaps/limit=-1
+roughness/mode=0
+roughness/src_normal=""
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=0

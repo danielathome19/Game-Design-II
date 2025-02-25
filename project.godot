@@ -14,6 +14,12 @@ config/name="Game-Design-II"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[editor]
+
+movie_writer/mjpeg_quality=0.2
+movie_writer/movie_file="C:/Users/daniel.szelogowsk/Desktop/Game-Design-II/assets/cutscenes/cutscene.avi"
+movie_writer/fps=30
+
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/zylann.hterrain/plugin.cfg")
