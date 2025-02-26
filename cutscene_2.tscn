@@ -19,6 +19,33 @@ background_mode = 2
 sky = SubResource("Sky_na6q2")
 tonemap_mode = 2
 
+[sub_resource type="Animation" id="Animation_jhgab"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(8.34154, 0, 5.40504)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera3D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0.483858, 0)]
+}
+
 [sub_resource type="Animation" id="Animation_i4rxw"]
 resource_name = "cutscene2"
 length = 15.0
@@ -97,33 +124,6 @@ tracks/6/keys = {
 "times": PackedFloat32Array(0)
 }
 
-[sub_resource type="Animation" id="Animation_jhgab"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Camera3D:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(8.34154, 0, 5.40504)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Camera3D:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0.483858, 0)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_o5jum"]
 _data = {
 "RESET": SubResource("Animation_jhgab"),
@@ -152,7 +152,7 @@ libraries = {
 autoplay = "cutscene2"
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(0.885207, 0, 0.465197, 0, 1, 0, -0.465197, 0, 0.885207, 8.34154, 0, 5.40504)
+transform = Transform3D(0.885207, 0, 0.465198, 0, 1, 0, -0.465198, 0, 0.885207, 8.34154, 0, 5.40504)
 
 [node name="Sketchfab_Scene" parent="." instance=ExtResource("1_213pm")]
 
