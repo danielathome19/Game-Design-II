@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=3 uid="uid://wkhxsw36rsmp"]
 
 [ext_resource type="PackedScene" uid="uid://dt7b5xcphiycr" path="res://assets/cutscenes/scene2/low_poly_winter_scene.glb" id="1_213pm"]
-[ext_resource type="Script" path="res://cutscene_1.gd" id="1_lo443"]
+[ext_resource type="Script" uid="uid://burs3f17qsd4e" path="res://cutscene_1.gd" id="1_lo443"]
 [ext_resource type="PackedScene" uid="uid://cdcis4c1gjx6s" path="res://assets/cutscenes/scene1/char_with_anim.glb" id="2_jjxjp"]
 [ext_resource type="AudioStream" uid="uid://eefqtroyds6y" path="res://assets/cutscenes/scene2/Dance_Powder.mp3" id="3_bnpgv"]
 
@@ -126,8 +126,8 @@ tracks/6/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_o5jum"]
 _data = {
-"RESET": SubResource("Animation_jhgab"),
-"cutscene2": SubResource("Animation_i4rxw")
+&"RESET": SubResource("Animation_jhgab"),
+&"cutscene2": SubResource("Animation_i4rxw")
 }
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_lcohq"]
@@ -147,7 +147,7 @@ environment = SubResource("Environment_el3xn")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_o5jum")
+&"": SubResource("AnimationLibrary_o5jum")
 }
 autoplay = "cutscene2"
 

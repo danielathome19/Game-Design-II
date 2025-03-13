@@ -2,9 +2,9 @@
 
 [ext_resource type="PackedScene" uid="uid://diohlnu7i3bkj" path="res://playerhud_3d.tscn" id="1_urcuv"]
 [ext_resource type="Texture2D" uid="uid://bqn60qg1pgw66" path="res://assets/textures/NightSkyHDRI008_1K-TONEMAPPED.jpg" id="2_nacce"]
-[ext_resource type="Script" path="res://addons/zylann.hterrain/hterrain.gd" id="2_ywu4r"]
-[ext_resource type="Resource" path="res://assets/terrains/scene_3d_2/data.hterrain" id="3_jtlmy"]
-[ext_resource type="Script" path="res://addons/zylann.hterrain/hterrain_texture_set.gd" id="4_opflb"]
+[ext_resource type="Script" uid="uid://dss2n8uq00ck6" path="res://addons/zylann.hterrain/hterrain.gd" id="2_ywu4r"]
+[ext_resource type="Resource" uid="uid://b2omxpu0mxh6g" path="res://assets/terrains/scene_3d_2/data.hterrain" id="3_jtlmy"]
+[ext_resource type="Script" uid="uid://dtrtpr8q2p3do" path="res://addons/zylann.hterrain/hterrain_texture_set.gd" id="4_opflb"]
 [ext_resource type="PackedScene" uid="uid://uwr0qp1x08r4" path="res://player_3d.tscn" id="5_ko1i2"]
 [ext_resource type="Texture2D" uid="uid://bgqhjbpi5d4rt" path="res://assets/textures/Ground079S_1K-JPG/Ground079S_1K-JPG_Color.jpg" id="6_k1rty"]
 [ext_resource type="Texture2D" uid="uid://cy6y008khciup" path="res://assets/textures/PavingStones142_1K-JPG/PavingStones142_1K-JPG_Color.jpg" id="7_r4rb2"]

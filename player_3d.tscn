@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://uwr0qp1x08r4"]
 
-[ext_resource type="Script" path="res://player_3d.gd" id="1_bemgm"]
+[ext_resource type="Script" uid="uid://cfcgfwejvsihp" path="res://player_3d.gd" id="1_bemgm"]
 [ext_resource type="PackedScene" uid="uid://cm62yvrnaq1eh" path="res://assets/models/gobot/gobot.glb" id="2_q2pw2"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_3kqij"]
