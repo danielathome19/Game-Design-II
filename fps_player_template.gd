@@ -25,6 +25,18 @@ var t_bob = 0.0
 var damage_shader = preload("res://assets/shaders/take_damage.tres")
 @onready var head = $Head
 
+var blaster
+var muzzle
+var old_blaster_y
+var dart_scene = preload("res://fps_dart.tscn")
+
+var spray_lock = 0.0  # Prevent infinite spray
+var NORMAL_SPRAY_AMOUNT = 0.03
+var CROUCH_SPRAY_AMOUNT = 0.01
+var SPRAY_AMOUNT = NORMAL_SPRAY_AMOUNT
+var FIRING_DELAY = 0.075
+var ATTACK = 5.0
+
 
 func _physics_process(delta):
 	# Add the gravity.
@@ -57,6 +69,12 @@ func _physics_process(delta):
 	damage_lock = max(damage_lock-delta, 0.0)
 	velocity += inertia
 	inertia = inertia.move_toward(Vector3(), delta * 1000.0)
+	
+	if Input.is_action_pressed("fire"):
+		do_fire()
+	spray_lock = max(spray_lock - delta, 0.0)
+	
+	# TODO: ammo stuff
 	
 	move_and_slide()
 	
@@ -99,6 +117,21 @@ func headbob(time):
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	blaster = $Head/Camera3D/blaster
+	muzzle = $Head/Camera3D/blaster/muzzle
+	old_blaster_y = blaster.position.y
+
+
+func do_fire():
+	if spray_lock == 0.0:  # TODO: and ammo > 0
+		var dart = dart_scene.instantiate()
+		add_child(dart)
+		var spray = SPRAY_AMOUNT
+		if not is_on_floor():
+			spray *= randf_range(1.5, 5)
+		dart.do_fire(camera, muzzle, spray, ATTACK)
+		# TODO: ammo -= 1
+		spray_lock = FIRING_DELAY
 
 
 func _unhandled_input(event):
