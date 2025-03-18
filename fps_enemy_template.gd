@@ -22,15 +22,26 @@ var SPRAY_AMOUNT = 0.08  # 0.03
 
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity") * 1.5
 
+
 func is_player_in_sight(player):
-	# TODO
-	return true
+	var from_pos = self.global_transform.origin  # Starting point of raycast
+	var to_pos = player.global_transform.origin  # Target point
+	var direction = to_pos - from_pos
+	var distance = direction.length()  # Distance to player
+	
+	var ray_query = PhysicsRayQueryParameters3D.new()
+	ray_query.from = from_pos
+	ray_query.to = to_pos + direction.normalized() * distance
+	ray_query.exclude = [get_rid()]  # Exclude self from query to avoid self-col
+	
+	var result = get_world_3d().direct_space_state.intersect_ray(ray_query)
+	return result.size() != 0 and result.collider == player
 
 func _physics_process(delta):
 	for player in get_tree().get_nodes_in_group("Player"):
 		if $AttackRange.overlaps_body(player) or is_player_in_sight(player):
 			nav_agent.target_position = player.global_position
-			# TODO: hunt timer
+			$HuntTimer.start()
 			if spray_lock == 0.0 and is_player_in_sight(player):
 				var dart = dart_scene.instantiate()
 				add_child(dart)
@@ -57,5 +68,12 @@ func _physics_process(delta):
 func take_damage(dmg, override=false, headshot=false, spawn_origin=null):
 	if override:
 		HEALTH -= dmg
-		# TODO: nav
+		if spawn_origin != null:
+			if randi_range(0, 100) > 66.6:
+				nav_agent.target_position = spawn_origin
+				$HuntTimer.start()
 		# TODO: sound
+
+
+func _on_timer_timeout() -> void:
+	nav_agent.target_position = Vector3.ZERO  # Or a random 3D vector

@@ -49,6 +49,38 @@ var CROUCH_COLLISION_RAD = 0.8
 var NORMAL_HEAD = 0.8
 var CROUCH_HEAD = 0.4
 
+var unaim_pos = Vector3(0.219, -0.27, -0.421)
+var aim_pos   = Vector3(0, -0.14, -0.511)
+var unaim_fov = 75.0
+var aim_fov   = 45.0
+var unaim_quat = euler_degrees_to_quat(Vector3(28.1, 31.7, 0))
+var aim_quat   = euler_degrees_to_quat(Vector3(11.6, 0, 0))
+var target_pos  = unaim_pos
+var target_quat = unaim_quat  # rotation
+var target_fov  = unaim_fov
+
+# TODO: audio
+
+
+func degrees_to_radians(degrees: Vector3) -> Vector3:
+	return Vector3(
+		deg_to_rad(degrees.x),
+		deg_to_rad(degrees.y),
+		deg_to_rad(degrees.z)
+	)
+
+
+func radians_to_degrees(radians: Vector3) -> Vector3:
+	return Vector3(
+		rad_to_deg(radians.x),
+		rad_to_deg(radians.y),
+		rad_to_deg(radians.z)
+	)
+
+
+func euler_degrees_to_quat(euler_degrees: Vector3) -> Quaternion:
+	return Quaternion.from_euler(degrees_to_radians(euler_degrees))
+
 
 func _physics_process(delta):
 	# Add the gravity.
@@ -104,7 +136,26 @@ func _physics_process(delta):
 			is_reloading = false
 	
 	# TODO: HUD stuff
-	# TODO: aiming down sight
+	
+	if Input.is_action_pressed("aim_sight"):
+		target_pos   = aim_pos
+		target_quat  = aim_quat
+		target_fov   = aim_fov
+		SPRAY_AMOUNT = CROUCH_SPRAY_AMOUNT
+	if Input.is_action_just_released("aim_sight"):
+		target_pos   = unaim_pos
+		target_quat  = unaim_quat
+		target_fov   = unaim_fov
+		SPRAY_AMOUNT = NORMAL_SPRAY_AMOUNT
+	$Head/Camera3D.fov = lerp($Head/Camera3D.fov, target_fov, delta*5.0)
+	blaster.position = blaster.position.lerp(target_pos, delta*10.0)
+	blaster.position.y = clamp(old_blaster_y + 
+							   (hbob.y*0.05 if is_on_floor() else 0),
+							   old_blaster_y-0.5, old_blaster_y+0.5)
+	var cur_quat = euler_degrees_to_quat(blaster.rotation_degrees)
+	blaster.rotation_degrees = radians_to_degrees(
+		cur_quat.slerp(target_quat, delta*10.0).get_euler()
+	)
 	
 	if Input.is_action_pressed("crouch"):
 		$CollisionShape3D.shape.height = CROUCH_HEIGHT + 0.05

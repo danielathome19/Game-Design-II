@@ -70,3 +70,8 @@ transform = Transform3D(-1, 0, -8.9407e-08, 0, 1, 0, 8.9407e-08, 0, -1, 0, 0.635
 near = 0.001
 
 [node name="RayCast3D" type="RayCast3D" parent="."]
+
+[node name="HuntTimer" type="Timer" parent="."]
+wait_time = 15.0
+
+[connection signal="timeout" from="HuntTimer" to="." method="_on_timer_timeout"]
