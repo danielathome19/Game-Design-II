@@ -41,3 +41,5 @@ transform = Transform3D(1, 2.32831e-10, 5.82077e-11, 1.16415e-10, -2.98023e-08, 
 radius = 0.0568142
 height = 0.14681
 material = SubResource("StandardMaterial3D_aak7c")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]

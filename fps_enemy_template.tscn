@@ -74,4 +74,11 @@ near = 0.001
 [node name="HuntTimer" type="Timer" parent="."]
 wait_time = 15.0
 
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+
+[node name="lblHealth" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.35, 0)
+text = "100"
+font_size = 64
+
 [connection signal="timeout" from="HuntTimer" to="." method="_on_timer_timeout"]

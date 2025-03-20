@@ -59,7 +59,10 @@ var target_pos  = unaim_pos
 var target_quat = unaim_quat  # rotation
 var target_fov  = unaim_fov
 
-# TODO: audio
+@onready var audio_player = $AudioStreamPlayer3D
+var reload_sound = preload("res://assets/audio/fps/recharge.mp3")
+var hit_sound = preload("res://assets/audio/fps/hitHurt.wav")
+var dink_sound = preload("res://assets/audio/fps/hitHead.wav")
 
 
 func degrees_to_radians(degrees: Vector3) -> Vector3:
@@ -127,7 +130,8 @@ func _physics_process(delta):
 	  (Input.is_action_just_pressed("fire") and AMMO == 0):
 		if TOTAL_AMMO > 0 and not is_reloading and AMMO != CLIP_SIZE:
 			is_reloading = true
-			# TODO: play sound
+			audio_player.stream = reload_sound
+			audio_player.play()
 			await get_tree().create_timer(2).timeout
 			var ammo_needed = CLIP_SIZE - AMMO
 			var new_ammo = min(ammo_needed, TOTAL_AMMO)
@@ -208,7 +212,10 @@ func take_damage(dmg, override=false, headshot=false, _spawn_origin=null):
 		# TODO: uncomment
 		#$HUD/overlay.material = damage_shader.duplicate()
 		#$HUD/overlay.material.set_shader_parameter("intensity", dmg_intensity)
-		# TODO: play sound
+		if audio_player.playing:
+			await audio_player.finished
+		audio_player.stream = dink_sound if headshot else hit_sound
+		audio_player.play()
 
 
 func headbob(time):
