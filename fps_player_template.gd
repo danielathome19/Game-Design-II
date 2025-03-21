@@ -139,7 +139,10 @@ func _physics_process(delta):
 			TOTAL_AMMO -= new_ammo
 			is_reloading = false
 	
-	# TODO: HUD stuff
+	$HUD/Label/lblHealth.text = "%d/%d" % [int(HEALTH), MAX_HEALTH]
+	$HUD/Label2/lblAmmo.text  = "%d/%d" % [int(AMMO), TOTAL_AMMO]
+	if damage_lock == 0.0:
+		$HUD/overlay.material = null
 	
 	if Input.is_action_pressed("aim_sight"):
 		target_pos   = aim_pos
@@ -182,8 +185,7 @@ func _physics_process(delta):
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		OS.alert("You died!")
 		get_tree().reload_current_scene()
-	
-	if len(get_tree().get_nodes_in_group("Enemy")) <= 0:
+	elif len(get_tree().get_nodes_in_group("Enemy")) <= 0:
 		await get_tree().create_timer(0.25).timeout
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		OS.alert("You win!")
@@ -209,9 +211,8 @@ func take_damage(dmg, override=false, headshot=false, _spawn_origin=null):
 		damage_lock = 0.5
 		HEALTH -= dmg
 		var dmg_intensity = clamp(1.0-((HEALTH+0.01)/MAX_HEALTH), 0.1, 0.8)
-		# TODO: uncomment
-		#$HUD/overlay.material = damage_shader.duplicate()
-		#$HUD/overlay.material.set_shader_parameter("intensity", dmg_intensity)
+		$HUD/overlay.material = damage_shader.duplicate()
+		$HUD/overlay.material.set_shader_parameter("intensity", dmg_intensity)
 		if audio_player.playing:
 			await audio_player.finished
 		audio_player.stream = dink_sound if headshot else hit_sound
