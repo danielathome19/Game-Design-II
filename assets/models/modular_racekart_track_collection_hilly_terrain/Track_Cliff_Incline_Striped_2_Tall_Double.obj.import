@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://c5a83dp163okc"
+path="res://.godot/imported/Track_Cliff_Incline_Striped_2_Tall_Double.obj-1c624f1319e0362bdd75631cc03c65dd.mesh"
+
+[deps]
+
+files=["res://.godot/imported/Track_Cliff_Incline_Striped_2_Tall_Double.obj-1c624f1319e0362bdd75631cc03c65dd.mesh"]
+
+source_file="res://assets/models/modular_racekart_track_collection_hilly_terrain/Track_Cliff_Incline_Striped_2_Tall_Double.obj"
+dest_files=["res://.godot/imported/Track_Cliff_Incline_Striped_2_Tall_Double.obj-1c624f1319e0362bdd75631cc03c65dd.mesh", "res://.godot/imported/Track_Cliff_Incline_Striped_2_Tall_Double.obj-1c624f1319e0362bdd75631cc03c65dd.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

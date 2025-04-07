@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://bx2pk7nd66glo"
+path="res://.godot/imported/Track_Striped_Finish_Line_Single_Blank.obj-3121c34f8724a87ef7e8b7bb1dac6ba2.mesh"
+
+[deps]
+
+files=["res://.godot/imported/Track_Striped_Finish_Line_Single_Blank.obj-3121c34f8724a87ef7e8b7bb1dac6ba2.mesh"]
+
+source_file="res://assets/models/modular_racekart_track_collection_hilly_terrain/Track_Striped_Finish_Line_Single_Blank.obj"
+dest_files=["res://.godot/imported/Track_Striped_Finish_Line_Single_Blank.obj-3121c34f8724a87ef7e8b7bb1dac6ba2.mesh", "res://.godot/imported/Track_Striped_Finish_Line_Single_Blank.obj-3121c34f8724a87ef7e8b7bb1dac6ba2.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

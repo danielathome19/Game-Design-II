@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://bhsvegcxs0hxw"
+path="res://.godot/imported/Terrain_Grass_Flat_1x1.obj-82d275224192d8c2944e292d4490013f.mesh"
+
+[deps]
+
+files=["res://.godot/imported/Terrain_Grass_Flat_1x1.obj-82d275224192d8c2944e292d4490013f.mesh"]
+
+source_file="res://assets/models/modular_racekart_track_collection_hilly_terrain/Terrain_Grass_Flat_1x1.obj"
+dest_files=["res://.godot/imported/Terrain_Grass_Flat_1x1.obj-82d275224192d8c2944e292d4490013f.mesh", "res://.godot/imported/Terrain_Grass_Flat_1x1.obj-82d275224192d8c2944e292d4490013f.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

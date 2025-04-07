@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://bhulo13cfjjam"
+path="res://.godot/imported/Prop_Track_Sign_Upcoming_Curve_90.obj-0949a0b9d6733326f8ecce85bdfa9429.mesh"
+
+[deps]
+
+files=["res://.godot/imported/Prop_Track_Sign_Upcoming_Curve_90.obj-0949a0b9d6733326f8ecce85bdfa9429.mesh"]
+
+source_file="res://assets/models/modular_racekart_track_collection_hilly_terrain/Prop_Track_Sign_Upcoming_Curve_90.obj"
+dest_files=["res://.godot/imported/Prop_Track_Sign_Upcoming_Curve_90.obj-0949a0b9d6733326f8ecce85bdfa9429.mesh", "res://.godot/imported/Prop_Track_Sign_Upcoming_Curve_90.obj-0949a0b9d6733326f8ecce85bdfa9429.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

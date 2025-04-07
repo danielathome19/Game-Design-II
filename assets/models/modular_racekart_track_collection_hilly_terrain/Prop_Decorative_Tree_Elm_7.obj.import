@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://ckc8u7s2d3lvm"
+path="res://.godot/imported/Prop_Decorative_Tree_Elm_7.obj-5747aefe22b77431f180a131a64e4948.mesh"
+
+[deps]
+
+files=["res://.godot/imported/Prop_Decorative_Tree_Elm_7.obj-5747aefe22b77431f180a131a64e4948.mesh"]
+
+source_file="res://assets/models/modular_racekart_track_collection_hilly_terrain/Prop_Decorative_Tree_Elm_7.obj"
+dest_files=["res://.godot/imported/Prop_Decorative_Tree_Elm_7.obj-5747aefe22b77431f180a131a64e4948.mesh", "res://.godot/imported/Prop_Decorative_Tree_Elm_7.obj-5747aefe22b77431f180a131a64e4948.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false
