@@ -1,9 +1,9 @@
 extends VehicleBody3D
 
 const MAX_STEER = 0.4
-const MAX_RPM = 500
+const MAX_RPM = 400
 const MAX_TORQUE = 200
-const HORSE_POWER = 300
+const HORSE_POWER = 200
 
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
@@ -28,5 +28,11 @@ func _physics_process(delta: float) -> void:
 										 transform, delta * 5.0)
 	$centerMass/Camera3D.look_at(global_position.lerp(
 								  global_position + linear_velocity, delta * 5.0))
-	# TODO: check and right
-	
+	check_and_right()
+
+func check_and_right():
+	if global_transform.basis.y.dot(Vector3.UP) < 0:
+		var cur_rotation = self.rotation_degrees
+		cur_rotation.x = 0  # Reset pitch
+		cur_rotation.z = 0  # Reset roll
+		self.rotation_degrees = cur_rotation
