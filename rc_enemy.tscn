@@ -39,7 +39,7 @@ resource_name = "wheelInside"
 albedo_color = Color(0.796057, 0.80477, 0.839623, 1)
 metallic = 1.0
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_0qbfc"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_gpiqc"]
 _surfaces = [{
 "aabb": AABB(-0.65, 0, -1.2, 1.3, 0.49, 2.65),
 "format": 34896613377,
@@ -223,7 +223,7 @@ _surfaces = [{
 "vertex_data": PackedByteArray("AABVVQAA//8AAAAA////////AAD///////9VVQAA//8AAP//AAD//wAAVVUAAP////9VVQAA////////AAD//4uJ///ekf//3pH//4uJ////f///i4n//4uJ////f///")
 }]
 blend_shape_mode = 0
-shadow_mesh = SubResource("ArrayMesh_0qbfc")
+shadow_mesh = SubResource("ArrayMesh_gpiqc")
 metadata/extras = {
 "targetNames": []
 }
