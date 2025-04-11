@@ -1,4 +1,6 @@
-[gd_scene load_steps=22 format=4 uid="uid://bo0g7ff5fgthl"]
+[gd_scene load_steps=23 format=4 uid="uid://bo0g7ff5fgthl"]
+
+[ext_resource type="Script" uid="uid://dmx45utr4f2lx" path="res://rc_enemy.gd" id="1_sh3ng"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t2uja"]
 resource_name = "plastic"
@@ -441,6 +443,7 @@ metadata/extras = {
 }
 
 [node name="rc_enemy" type="VehicleBody3D"]
+script = ExtResource("1_sh3ng")
 
 [node name="body2" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.224931, 0.0229364)
