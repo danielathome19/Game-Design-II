@@ -76,7 +76,7 @@ func _ready() -> void:
 	var mat = $body2.mesh.surface_get_material(2)
 	var old_hsv = mat.albedo_color
 	var new_mat = StandardMaterial3D.new()
-	new_mat.albedo_color = Color.from_hsv(randf(), old_hsv.s, randf())
 	var new_mesh = $body2.mesh.duplicate()
+	new_mat.albedo_color = Color.from_hsv(randf(), old_hsv.s, randf())
 	new_mesh.surface_set_material(2, new_mat)
 	$body2.mesh = new_mesh
